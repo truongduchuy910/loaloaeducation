@@ -8,15 +8,15 @@ module.exports = function (app, passport) {
             failureRedirect: '/signup',
             failureFlash: true
         }));
-    app.post('/login', passport.authenticate('local-login', {
+    app.post('/teacher-login', passport.authenticate('local-teacher-login', {
         successRedirect: '/dashboard',
-        failureRedirect: '/login',
+        failureRedirect: '/teacher-login',
         failureFlash: true
     })
     );
     //------------------------------------------------------------------------------------------------------------
     app.get('/logout', function (req, res) {
         req.logout();
-        res.redirect('/login');
+        res.redirect('/teacher-login');
     });
 }

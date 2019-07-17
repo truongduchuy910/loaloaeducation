@@ -15,7 +15,7 @@ module.exports = function (passport) {
         });
     });
 
-    passport.use('local-login', new LocalStrategy({
+    passport.use('local-teacher-login', new LocalStrategy({
         usernameField: 'user',
         passwordField: 'password',
         passReqToCallback: true
