@@ -4,19 +4,19 @@ module.exports = function (app, passport) {
             next();
         },
         passport.authenticate('local-signup', {
-            successRedirect: '/dashboard',
+            successRedirect: '/admin/dashboard',
             failureRedirect: '/signup',
             failureFlash: true
         }));
-    app.post('/teacher-login', passport.authenticate('local-teacher-login', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/teacher-login',
+    app.post('/admin-login', passport.authenticate('local-admin-login', {
+        successRedirect: '/admin/dashboard',
+        failureRedirect: '/admin-login',
         failureFlash: true
     })
     );
     //------------------------------------------------------------------------------------------------------------
     app.get('/logout', function (req, res) {
         req.logout();
-        res.redirect('/teacher-login');
+        res.redirect('/admin-login');
     });
 }
