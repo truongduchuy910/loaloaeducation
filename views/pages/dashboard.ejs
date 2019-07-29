@@ -15,13 +15,14 @@
 <body>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="font-size: 14px;">
-            <div class="container"><a class="navbar-brand" href="#"><%=user.local.email%></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse"
-                    id="navcol-1">
+            <div class="container"><a class="navbar-brand" href="#"><%=user.local.email%></a><button
+                    data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                        navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#">Đăng Thông Báo</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="/broadcast">Đã Đăng</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="/teacher-setting">Trang Cá Nhân</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="/">Đăng Thông Báo</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="/">Đã Đăng</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="/">Trang Cá Nhân</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="/logout">Đăng Xuất</a></li>
                     </ul>
                 </div>
@@ -40,13 +41,17 @@
                 <div id="toolbar"></div>
                 <div id="editor" style="height: 100px;"></div>
             </div>
+            <div
+                class="d-flex d-sm-flex d-md-flex justify-content-center justify-content-sm-center justify-content-md-end">
+                <button class="btn btn-primary btn-sm" id="post" type="button" style="margin-top: 15px;">Đăng Thông
+                    Báo</button></div>
         </div>
-        <div class="d-flex d-sm-flex d-md-flex justify-content-center justify-content-sm-center justify-content-md-end"><button class="btn btn-primary btn-sm" id="post" type="button" style="margin-top: 15px;">Đăng Thông Báo</button></div>
     </div>
-    </div>
-    <nav class="navbar navbar-light navbar-expand-md fixed-bottom" style="padding: 0px;padding-top: 3px;padding-bottom: 3px;">
+    <nav class="navbar navbar-light navbar-expand-md fixed-bottom"
+        style="padding: 0px;padding-top: 3px;padding-bottom: 3px;">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse d-flex justify-content-center align-items-center"><span class="navbar-text" style="padding: 0px;">TechDra © 2019<br></span></div>
+            <div class="collapse navbar-collapse d-flex justify-content-center align-items-center"><span
+                    class="navbar-text" style="padding: 0px;">TechDra © 2019<br></span></div>
         </div>
     </nav>
     <script src="/assets/js/jquery.min.js"></script>
