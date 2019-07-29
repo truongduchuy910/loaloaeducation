@@ -13,7 +13,6 @@ mongoose.connect(process.env.mongodb_uri, { useNewUrlParser: true }, (err) => {
     console.log('connected to mongodb');
   }
 });
-require('./configs/passport')(passport);
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -26,7 +25,11 @@ app.use(session({ secret: 'xxxxxxxxxxxxx' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+require('./modules/passport')(passport);
+
 require('./routers/authentication')(app, passport)
 require('./routers/pages')(app)
+
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
