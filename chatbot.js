@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const PORT = process.env.PORT || 2222
+const PORT = process.env.PORT || 1337
 var flash = require('connect-flash');
 var session = require('express-session');
 const bodyParser = require('body-parser')
