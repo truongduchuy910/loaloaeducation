@@ -1,7 +1,8 @@
-module.exports = function (app) {
-    app.post('/messenger-platform/webhooks', function (req, res) {
-        let body = req.body;
+var config = require('./config')
 
+module.exports = function (app) {
+    app.post('/messenger/webhooks', function (req, res) {
+        let body = req.body;
         if (body.object === 'page') {
 
             body.entry.forEach(function (entry) {
@@ -16,7 +17,7 @@ module.exports = function (app) {
         }
 
     })
-    app.get('/messenger-platform/webhooks', (req, res) => {
+    app.get('/messenger/webhooks', (req, res) => {
 
         let VERIFY_TOKEN = "truongduc910"
         let mode = req.query['hub.mode'];

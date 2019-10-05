@@ -16,11 +16,11 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'website/views'))
 app.set('view engine', 'ejs')
 app.use(session({ secret: 'xxxxxxxxxxxxx' }));
 app.use(flash());
 
-require('./Messenger Platform/webhooks') (app)
-
+require('./Messenger/webhooks')(app)
+require('./website/controllers/messenger')(app)
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))
