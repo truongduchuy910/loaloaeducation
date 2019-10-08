@@ -1,2 +1,2 @@
-# Dự Án Diễn Đàn Giáo Dục
-## Phi Lợi Nhuận
+# Loa Loa Education
+## Dự án diễn đàn giáo dục phi lợi nhuận
