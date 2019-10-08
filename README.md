@@ -19,4 +19,7 @@ Và hàng nghìn khó khăn khác, cho nên trong quá trình phát triển. Nh�
 Làm việc liên tục không phải là làm nhiều. Ngày đó bạn có thể viết được 1 - 2 dòng, có thể chạy hoặc không chạy. Nhưng vẫn phải viết. Bạn cứ hình dung dự án là một đám đông, mỗi bước chân là một dòng code. Thì nếu bạn không nộp code lên liên tục thì dự án không tài nào di chuyển nổi.
 
 #### Viết tài liệu
-Vì bạn làm việc cùng mọi người, nên nhất thiết mọi người phải biết bạn làm gì. Nếu viết tài liệu làm hiệu suất của bạn giảm đi 20% thì không viết sẽ làm hiệu suất của dự án giảm h
+Vì bạn làm việc cùng mọi người, nên nhất thiết mọi người phải biết bạn làm gì. Nếu viết tài liệu làm hiệu suất của bạn giảm đi 20% thì không viết sẽ làm hiệu suất của dự án giảm hơn 20%.
+
+
+
