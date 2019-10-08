@@ -16,7 +16,9 @@ Thứ hai, nếu mọi người đều mạnh ở mỗi lĩnh vực riêng biệ
 Và hàng nghìn khó khăn khác, cho nên trong quá trình phát triển. Những việc như bỏ hết làm lại từ đầu, hay không hiểu cách sử dụng modules của người khác, hay tiến độ phát triễn trì trệ và bế tắc là hết sức bình thường. Nhưng chỉ cần mọi người nhớ và tuân thủ những quy tắc sau, thì mọi việc sẽ đỡ đi phần nào:
 
 1. Làm việc liên tục
+
 Làm việc liên tục không phải là làm nhiều. Ngày đó bạn có thể viết được 1 - 2 dòng, có thể chạy hoặc không chạy. Nhưng vẫn phải viết. Bạn cứ hình dung dự án là một đám đông, mỗi bước chân là một dòng code. Thì nếu bạn không nộp code lên liên tục thì dự án không tài nào di chuyển nổi.
 
 2. Viết tài liệu
+
 Vì bạn làm việc cùng mọi người, nên nhất thiết mọi người phải biết bạn làm gì. Nếu viết tài liệu làm hiệu suất của bạn giảm đi 20% thì không viết sẽ làm hiệu suất của dự án giảm h
