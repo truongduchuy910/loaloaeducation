@@ -3,6 +3,7 @@ var config = require('./config')
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
+        console.log('received');
         if (body.object === 'page') {
 
             body.entry.forEach(function (entry) {
@@ -18,6 +19,7 @@ module.exports = function (app) {
 
     })
     app.get('/messenger/webhooks', (req, res) => {
+        uy
 
         let VERIFY_TOKEN = "truongduc910"
         let mode = req.query['hub.mode'];
