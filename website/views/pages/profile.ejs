@@ -12,14 +12,13 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'Messenger'));
         window.extAsyncInit = function () {
-            // the Messenger Extensions JS SDK is done loading 
+            console.log("the Messenger Extensions JS SDK is done loading");
             MessengerExtensions.getContext('191786431454227',
                 function success(thread_context) {
-                    // success
                     console.log(thread_context);
                 },
                 function error(err) {
-                    // error
+                    console.log(err);
                 }
             );
         };
