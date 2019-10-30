@@ -22,5 +22,5 @@ app.use(session({ secret: 'xxxxxxxxxxxxx' }));
 app.use(flash());
 
 require('./Messenger/webhooks')(app)
-require('./website/controllers/messenger')(app)
+require('./website/controllers')(app)
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))

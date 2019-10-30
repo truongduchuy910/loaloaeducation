@@ -6,7 +6,9 @@ module.exports = function (app) {
         if (body.object === 'page') {
 
             body.entry.forEach(function (entry) {
-                var { message } = entry.messaging[0];
+                var webhooks_event = entry.messaging[0];
+                var { message, sender } = webhooks_event;
+                console.log("PSID:", sender);
                 if (message) {
                     console.log(message);
                 }

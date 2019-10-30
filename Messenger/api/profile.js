@@ -23,7 +23,7 @@ module.exports = {
             method: 'post',
             uri: 'https://graph.facebook.com/v4.0/me/messenger_profile',
             qs: {
-                access_token: 'EAAFwU7ZAQ25UBAO2PxiqZBB7eqZAJ1tQwn39h4gz0yIVglLfBRdDqCv9PoPV9Sb97pb0gEbpfMojewfUDXXh9G5F3HqVqm3zfXJIJfh9FSOiJiFz1y3PZAIRgFqfOLrxe2QDkWNoTbUnRsGJ5DelZADGFgd2bjqnoiwTu3zlEFHzEmMMresJzLCnaJ86fBRcZD'
+                access_token: 'EAACubcIenBMBAN0kDLkpv4i4QlrDyEMkcfZBklEDIsqQsgoULabfMcioPjcXbLZCU7Tx34yZAk0ciV7pSdQPg01CRlI7L9ZC8pwPgnVOJnEBVC4BhHUgaXrLGACw0G3NOUwksjxB70lOaJFskZB7ORPrVZAQeBJGKL4XxZCJicMWrfJUP9CwpSVisjmZA3oqV30ZD'
             },
             json: {
                 "persistent_menu": [
@@ -34,20 +34,14 @@ module.exports = {
 
                             {
                                 "type": "web_url",
-                                "title": "Đăng Ký Nhận Thông Báo",
-                                "url": "https://0a5dfc40.ngrok.io/messenger/profile",
-                                "webview_height_ratio": "tall"
-                            },
-                            {
-                                "type": "web_url",
-                                "title": "Cập Nhật Thông Tin Cá Nhân",
-                                "url": "https://0a5dfc40.ngrok.io/messenger/profile",
+                                "title": "Nhập Thông Tin Cá Nhân",
+                                "url": "https://edu.loaloa.me/messenger/profile",
                                 "webview_height_ratio": "tall"
                             },
                             {
                                 "type": "web_url",
                                 "title": "Gửi Thông Báo",
-                                "url": "https://0a5dfc40.ngrok.io/messenger/broadcast",
+                                "url": "https://edu.loaloa.me/messenger/broadcast",
                                 "webview_height_ratio": "tall"
                             },
                         ]
@@ -55,6 +49,7 @@ module.exports = {
                 ]
             }
         }, (err, res, body) => {
+            console.log("done persistent");
             console.log(err, body);
         })
     },
