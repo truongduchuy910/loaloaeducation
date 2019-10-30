@@ -6,11 +6,10 @@ module.exports = function (app) {
         if (body.object === 'page') {
 
             body.entry.forEach(function (entry) {
-                console.log(entry);
-                // let { messaging, messaging_postbacks, message_reads } = entry;
-                // if (messaging) {
-                //     console.log(messaging);
-                // }
+                var { message } = entry.messaging[0];
+                if (message) {
+                    console.log(message);
+                }
             });
 
             res.status(200).send('EVENT_RECEIVED');
