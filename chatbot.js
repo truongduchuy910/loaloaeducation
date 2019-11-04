@@ -6,11 +6,12 @@ var session = require('express-session');
 const bodyParser = require('body-parser')
 const logger = require('morgan');
 const app = express();
-// mongoose.connect(process.env.mongodb_uri, { useNewUrlParser: true }, (err) => {
-//   if (!err) {
-//     console.log('connected to mongodb');
-//   }
-// });
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost:27017/chatbot?retryWrites=true', { useNewUrlParser: true }, (err) => {
+   if (!err) {
+     console.log('connected to mongodb');
+   }
+ });
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: false

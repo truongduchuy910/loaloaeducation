@@ -4,17 +4,19 @@ module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
         console.log('received');
-        if (body.object === 'page') {
+        if (body.object == 'page') {
 
             body.entry.forEach(function (entry) {
                 var webhooks_event = entry.messaging[0];
                 var { message, sender } = webhooks_event;
-                database.find({ psid: sender }, docs => {
+		var psid = sender.id;
+                database.find({}, (err, docs) => {
+		    console.log('documents in messengers collection');
                     console.log(docs);
                     if (!docs.length) {
-                        database.insertMany({
-                            psid: sender
-                        }, docs => {
+                       database.insertMany({
+                            psid: psid 
+                         }, (err, docs) => {
                             console.log(docs);
                         })
                     }
