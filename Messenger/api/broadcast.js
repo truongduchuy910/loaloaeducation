@@ -60,24 +60,7 @@ module.exports = {
 }
 
 
-//https://developers.facebook.com/docs/messenger-platform/send-messages/broadcast-messages/target-broadcasts#associate_label
-function associate_label(PSID, ID, callback) {
-    request({
-        uri: "https://graph.facebook.com/v2.11/" + ID + "/label",
-        qs: { access_token: config.messengerPlatform.access_token },
-        method: "POST",
-        json: {
-            user: PSID
-        }
-    }, (err, res, body) => {
-        try {
-            callback(err, body)
-        } catch (error) {
-            callback(error, body)
-        }
-    }
-    );
-}
+
 
 module.exports.associate_label = associate_label;
 function message_creatives(message, callback) {
@@ -179,95 +162,6 @@ function broadcast(PSID, label, message, callback) {
     })
 }
 module.exports.broadcast = broadcast;
-
-
-//https://developers.facebook.com/docs/messenger-platform/send-messages/broadcast-messages/target-broadcasts#remove_label
-function unassociate_label(PSID, ID, callback) {
-    request({
-        uri: "https://graph.facebook.com/v2.11/" + ID + "/label",
-        qs: { access_token: config.messengerPlatform.access_token },
-        method: "DELETE",
-        json: {
-            user: PSID
-        }
-    }, (err, res, body) => {
-        callback(err, body)
-    });
-}
-module.exports.unassociate_label = unassociate_label;
-
-
-// https://developers.facebook.com/docs/messenger-platform/send-messages/broadcast-messages/target-broadcasts#retrieving_labels_by_psid
-function retrieve_PSID_label(PSID, callback) {
-    request({
-        uri: "https://graph.facebook.com/v2.11/" + PSID + "/custom_labels",
-        qs: {
-            fields: "name",
-            access_token: config.messengerPlatform.access_token
-        },
-        method: "GET",
-    }, (err, res, body) => {
-        callback(err, JSON.parse(body));
-    });
-}
-
-
-//https://developers.facebook.com/docs/messenger-platform/send-messages/broadcast-messages/target-broadcasts#get_label_details
-function get_label_details(custom_label_id, callback) {
-    request({
-        uri: "https://graph.facebook.com/v2.11/" + custom_label_id,
-        qs: {
-            fields: "name",
-            access_token: config.messengerPlatform.access_token
-        },
-        method: "GET",
-    }, (err, res, Body) => {
-        try {
-            var body = JSON.parse(Body);
-            callback(err, body)
-        } catch (error) {
-            console.log('modules/messenger_API.js/get_label_details')
-            console.log(error);
-        }
-    });
-}
-
-
-//https://developers.facebook.com/docs/messenger-platform/send-messages/broadcast-messages/target-broadcasts#get_all_labels
-function get_all_labels(callback) {
-    request({
-        uri: "https://graph.facebook.com/v2.11/me/custom_labels",
-        qs: {
-            fields: "name",
-            access_token: config.messengerPlatform.access_token
-        },
-        method: "GET",
-    }, (err, res, Body) => {
-        try {
-            var body = JSON.parse(Body);
-            callback(err, body)
-        } catch (error) {
-            console.log('modules/messenger_API.js/get_all_labels')
-            console.log(error);
-        }
-    });
-}
-
-
-//https://developers.facebook.com/docs/messenger-platform/send-messages/broadcast-messages/target-broadcasts#delete_label
-function remove_label(custom_label_id, callback) {
-    request({
-        uri: "https://graph.facebook.com/v2.11/" + custom_label_id,
-        qs: {
-            access_token: config.messengerPlatform.access_token
-        },
-        method: "DELETE"
-    }, (err, res, body) => {
-        callback(err, JSON.parse(body));
-    });
-}
-module.exports.remove_label = remove_label;
-
 
 //https://developers.facebook.com/docs/messenger-platform/send-messages#message_types 
 function send(PSID, message, callback) {

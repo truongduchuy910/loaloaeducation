@@ -1,4 +1,5 @@
 var models = require("./models.js")
+var database = require('./database')
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
@@ -8,7 +9,16 @@ module.exports = function (app) {
             body.entry.forEach(function (entry) {
                 var webhooks_event = entry.messaging[0];
                 var { message, sender } = webhooks_event;
-                console.log("PSID:", sender);
+                database.find({ psid: sender }, docs => {
+                    console.log(docs);
+                    if (!docs.length) {
+                        database.insertMany({
+                            psid: sender
+                        }, docs => {
+                            console.log(docs);
+                        })
+                    }
+                })
                 if (message) {
                     console.log(message);
                 }
