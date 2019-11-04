@@ -1,4 +1,4 @@
-var custumLabels = require('./api/CustomLabels');
+var customLabels = require('./api/customLabels');
 module.exports = {
 
 }
