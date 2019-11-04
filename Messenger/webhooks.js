@@ -1,5 +1,6 @@
 var models = require("./models.js")
 var database = require('./database')
+var send = require('./api/send')
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
@@ -9,14 +10,14 @@ module.exports = function (app) {
             body.entry.forEach(function (entry) {
                 var webhooks_event = entry.messaging[0];
                 var { message, sender } = webhooks_event;
-		var psid = sender.id;
-                database.find({}, (err, docs) => {
-		    console.log('documents in messengers collection');
+                var psid = sender.id;
+                database.find({ psid: psid }, (err, docs) => {
+                    console.log('documents in messengers collection');
                     console.log(docs);
                     if (!docs.length) {
-                       database.insertMany({
-                            psid: psid 
-                         }, (err, docs) => {
+                        database.insertMany({
+                            psid: psid
+                        }, (err, docs) => {
                             console.log(docs);
                         })
                     }

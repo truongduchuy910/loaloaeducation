@@ -1,16 +1,24 @@
+
+https://developers.facebook.com/docs/messenger-platform/reference/send-apivar request = require('request')
 var request = require('request')
 var config = require('../config')
 module.exports = {
-    create_label: function (psid, label, callback) {
+    send: function (psid, text, callback) {
         request(
             {
-                uri: "https://graph.facebook.com/v2.11/me/custom_labels",
+                uri: "https://graph.facebook.com/v5.0/me/messages",
                 qs: {
                     access_token: config.access_token
                 },
                 method: "POST",
                 json: {
-                    name: label
+                    messaging_type: 'RESPONSE',
+                    recipient: {
+                        id: psid
+                    },
+                    message: {
+                        text: text
+                    }
                 }
             },
             (err, res, body) => {
@@ -18,4 +26,5 @@ module.exports = {
             }
         )
     },
- 
+}
+
