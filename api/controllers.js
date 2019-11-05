@@ -1,4 +1,5 @@
 var ms = require('../messenger/models').public;
+console.log("Hello");
 module.exports = function (app) {
     app
         .get('/messenger/profile', (req, res) => {
