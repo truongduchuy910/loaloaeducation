@@ -20,6 +20,7 @@ window.extAsyncInit = function () {
                     var profile = data.docs;
                     document.getElementById('first_name').innerText = profile.first_name;
                     document.getElementById('last_name').innerText = profile.last_name;
+                    document.getElementById('profile_pic').src = profile.profile_pic;
                 }
             });
         },
