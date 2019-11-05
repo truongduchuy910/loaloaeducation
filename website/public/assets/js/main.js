@@ -29,6 +29,6 @@ var routers = {
         $.get('/messenger/profile',
             { psid: psid }, data => {
                 callback(data)
-            }, 'json');
+            });
     }
 }
