@@ -5,7 +5,8 @@ var identity = require('./api/identity');
 var profile = require('./api/profile');
 module.exports = {
     public: {
-        profile: identity.profile
+        identity: identity,
+        customLabels: customLabels
     },
     sender: function (psid, callback) {
 
