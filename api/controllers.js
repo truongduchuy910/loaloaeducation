@@ -4,6 +4,8 @@ module.exports = function (app) {
         .get('/messenger/profile', (req, res) => {
             var psid;
             console.log(req.body);
+            console.log(req.query);
+
             if (req.body) {
                 psid = req.body.psid;
             }
