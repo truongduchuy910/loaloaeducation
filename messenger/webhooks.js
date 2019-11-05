@@ -17,7 +17,7 @@ module.exports = function (app) {
                         database.findOneAndUpdate({ psid: psid }, {
                             first_name: profile.first_name,
                             last_name: profile.last_name,
-                            profile_pic: profile_pic.profile_pic
+                            profile_pic: profile.profile_pic
                         }, (err, docs) => {
                             console.log(docs);
                         })
