@@ -13,8 +13,9 @@ window.extAsyncInit = function () {
             document.getElementById('psid').innerText = psid;
 
             $.get('/api/profile', {
-                psid: 'asdf'
+		    psid:psid 
             }, function (data) {
+		    document.getElementById('first_name').innerText = data;
                 if (data.docs) {
                     var profile = data.docs;
                     document.getElementById('first_name').innerText = profile.first_name;
