@@ -14,10 +14,11 @@ module.exports = function (app) {
                 var psid = sender.id;
                 database.find({ psid: psid }, (err, docs) => {
                     identity.profile(psid, (err, profile) => {
-                        docs.first_name = profile.first_name;
-                        docs.last_name = profile.last_name,
-                            docs.profile_pic = profile.profile_pic;
-                        docs.save((err, docs) => {
+                        database.findOneAndUpdate({ psid: psid }, {
+                            first_name: profile.first_name,
+                            last_name: profile.last_name,
+                            profile_pic: profile_pic.profile_pic
+                        }, (err, docs) => {
                             console.log(docs);
                         })
                     })
