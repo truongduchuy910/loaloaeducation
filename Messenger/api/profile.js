@@ -18,7 +18,6 @@ module.exports = {
         })
     },
     persistent: function () {
-        console.log(process.env.PAGE_ACCESS_TOKEN)
         request({
             method: 'post',
             uri: 'https://graph.facebook.com/v4.0/me/messenger_profile',
@@ -29,19 +28,23 @@ module.exports = {
                 "persistent_menu": [
                     {
                         "locale": "default",
-                        "composer_input_disabled": false,
+                        "composer_input_disabled": "false",
                         "call_to_actions": [
 
                             {
+                                "messenger_extensions": "true",
                                 "type": "web_url",
                                 "title": "Nhập Thông Tin Cá Nhân",
                                 "url": "https://edu.loaloa.me/messenger/profile",
+                                "fallback_url": "https://edu.loaloa.me/messenger/profile",
                                 "webview_height_ratio": "tall"
                             },
                             {
+                                "messenger_extensions": "true",
                                 "type": "web_url",
                                 "title": "Gửi Thông Báo",
                                 "url": "https://edu.loaloa.me/messenger/broadcast",
+                                "fallback_url": "https://edu.loaloa.me/messenger/broadcast",
                                 "webview_height_ratio": "tall"
                             },
                         ]
