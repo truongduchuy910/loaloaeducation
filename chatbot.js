@@ -12,6 +12,8 @@ mongoose.connect('mongodb://localhost:27017/chatbot?retryWrites=true', { useNewU
     console.log('connected to mongodb');
   }
 });
+app.use(logger('dev'));
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: false
