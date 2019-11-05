@@ -13,7 +13,10 @@
         }(document, 'script', 'Messenger'));
 
         window.extAsyncInit = function () {
+
             console.log("the Messenger Extensions JS SDK is done loading");
+
+            console.log("getContext");
             MessengerExtensions.getContext('191786431454227',
                 function success(thread_context) {
                     console.log(thread_context);
@@ -22,14 +25,16 @@
                     console.log('error: ', err);
                 }
             );
-	MessengerExtensions.getUserID(function success(uids) {
-  	// User ID was successfully obtained. 
-      	var psid = uids.psid;
- 	console.log(psid); 
-	    }, function error(err, errorMessage) {      
-  		// Error handling code
-		    console.log('errors: ', err, errorMessage);
-    	});    
+
+            console.log("getUserId");
+            MessengerExtensions.getUserID(function success(uids) {
+                // User ID was successfully obtained. 
+                var psid = uids.psid;
+                console.log(psid);
+            }, function error(err, errorMessage) {
+                // Error handling code
+                console.log('errors: ', err, errorMessage);
+            });
         };
     </script>
 </head>
