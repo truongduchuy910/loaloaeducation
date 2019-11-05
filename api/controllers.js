@@ -3,6 +3,7 @@ module.exports = function (app) {
     app
         .get('/messenger/profile', (req, res) => {
             var psid;
+            console.log(req.body);
             if (req.body) {
                 psid = req.body.psid;
             }
@@ -10,6 +11,8 @@ module.exports = function (app) {
                 ms.profile(psid, (err, docs) => {
                     res.send(err, docs);
                 })
+            } else {
+                res.send('Lỗi cú pháp', null);
             }
         })
 }
