@@ -14,4 +14,7 @@ module.exports = function (app) {
                 res.send(null);
             }
         })
+	.get('/api/labels', (req, res) => {
+	    res.send();
+	}
 }

@@ -10,8 +10,6 @@ window.extAsyncInit = function () {
     MessengerExtensions.getContext('191786431454227',
         function success(thread_context) {
             var psid = thread_context.psid;
-            document.getElementById('psid').innerText = psid;
-
             $.get('/api/profile', {
                 psid: psid
             }, function (profile) {
