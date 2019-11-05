@@ -15,7 +15,7 @@ window.extAsyncInit = function () {
             $.get('/api/profile', {
 		    psid:psid 
             }, function (data) {
-		    document.getElementById('first_name').innerText = data;
+		    document.getElementById('first_name').innerText = data.error;
                 if (data.docs) {
                     var profile = data.docs;
                     document.getElementById('first_name').innerText = profile.first_name;
