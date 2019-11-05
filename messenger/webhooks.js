@@ -14,6 +14,7 @@ module.exports = function (app) {
                 var psid = sender.id;
                 database.find({ psid: psid }, (err, docs) => {
                     identity.profile(psid, (err, profile) => {
+                        console.log(profile);
                         database.findOneAndUpdate({ psid: psid }, {
                             first_name: profile.first_name,
                             last_name: profile.last_name,
