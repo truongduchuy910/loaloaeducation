@@ -1,21 +1,17 @@
 var ms = require('../messenger/models').public;
-console.log("Hello");
 module.exports = function (app) {
     app
-        .get('/messenger/profile', (req, res) => {
+        .get('/api/profile', (req, res) => {
             var psid;
-            console.log(req.body);
-            console.log(req.query);
-
-            if (req.body) {
-                psid = req.body.psid;
+            if (req.query) {
+                psid = req.query.psid;
             }
             if (psid) {
                 ms.profile(psid, (err, docs) => {
-                    res.send(err, docs);
+                    res.send(docs);
                 })
             } else {
-                res.send('Lỗi cú pháp', null);
+                res.send(null);
             }
         })
 }

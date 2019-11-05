@@ -3,7 +3,7 @@
 ```
 GET 
 Content-Type: application/json
-/messenger/profile
+/api/profile
 REQUEST
 {
     psid: <PSID>
@@ -26,7 +26,7 @@ SUCCESS RESPONSE
 ```
 POST 
 Content-Type: application/json
-/messenger/profile
+/api/profile
 REQUEST
 {
     psid: <PSID>

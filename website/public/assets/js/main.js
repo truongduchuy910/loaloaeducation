@@ -11,24 +11,18 @@ window.extAsyncInit = function () {
         function success(thread_context) {
             var psid = thread_context.psid;
             document.getElementById('psid').innerText = psid;
-            routers.profile(psid, data => {
+
+            $.get('/api/profile', {
+                psid: 'asdf'
+            }, function (data) {
                 if (data.docs) {
                     var profile = data.docs;
                     document.getElementById('first_name').innerText = profile.first_name;
                     document.getElementById('last_name').innerText = profile.last_name;
                 }
-
-            })
+            });
         },
         function error(err) {
         }
     );
 };
-var routers = {
-    profile: function (psid, callback) {
-        $.get('/messenger/profile',
-            { psid: psid }, data => {
-                callback(data)
-            });
-    }
-}
