@@ -19,10 +19,10 @@
             console.log("getContext");
             MessengerExtensions.getContext('191786431454227',
                 function success(thread_context) {
-                    console.log(thread_context);
+                    document.getElementById('getContext').innerText = thread_context;
                 },
                 function error(err) {
-                    console.log('error: ', err);
+                    document.getElementById('getContext').innerText = 'error: ' + err;
                 }
             );
 
@@ -30,10 +30,10 @@
             MessengerExtensions.getUserID(function success(uids) {
                 // User ID was successfully obtained. 
                 var psid = uids.psid;
-                console.log(psid);
+                document.getElementById('getUserId').innerText = psid;
             }, function error(err, errorMessage) {
                 // Error handling code
-                console.log('errors: ', err, errorMessage);
+                document.getElementById('getUserId').innerText = err + errorMessage;
             });
         };
     </script>
@@ -44,6 +44,9 @@
         <input name="class" type="text" placeholder="Lớp học phần">
         <button type="submit">Lưu</button>
     </form>
+    <p id="getContext">
+    </p>
+    <p id="getUserId"></p>
 </body>
 
 </html>
