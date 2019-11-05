@@ -1,6 +1,7 @@
 var models = require("./models.js")
 var database = require('./database')
 var send = require('./api/send')
+var identity = require('./api/identity')
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
@@ -12,6 +13,14 @@ module.exports = function (app) {
                 var { message, sender } = webhooks_event;
                 var psid = sender.id;
                 database.find({ psid: psid }, (err, docs) => {
+                    identity.profile(psid, (err, profile) => {
+                        docs.first_name = profile.first_name;
+                        docs.last_name = profile.last_name,
+                            docs.profile_pic = profile.profile_pic;
+                        docs.save((err, docs) => {
+                            console.log(docs);
+                        })
+                    })
                     console.log('documents in messengers collection');
                     console.log(docs);
                     if (!docs.length) {
