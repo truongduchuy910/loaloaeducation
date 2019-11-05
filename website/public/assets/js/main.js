@@ -11,17 +11,24 @@ window.extAsyncInit = function () {
         function success(thread_context) {
             var psid = thread_context.psid;
             document.getElementById('psid').innerText = psid;
-            console.log('loading');
+            routers.profile(psid, data => {
+                if (data.docs) {
+                    var profile = data.docs;
+                    document.getElementById('first_name').innerText = profile.first_name;
+                    document.getElementById('last_name').innerText = profile.last_name;
+                }
 
+            })
         },
         function error(err) {
-            console.log(err);
         }
     );
 };
 var routers = {
-    getUser: function (psid) {
-        $.post('/messenger/getUser/' + psid, (data) => {
-        });
+    profile: function (psid, callback) {
+        $.get('/messenger/profile',
+            { psid: psid }, data => {
+                callback(data)
+            }, 'json');
     }
 }
