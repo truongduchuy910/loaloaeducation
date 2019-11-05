@@ -13,40 +13,26 @@
         }(document, 'script', 'Messenger'));
 
         window.extAsyncInit = function () {
-
-            console.log("the Messenger Extensions JS SDK is done loading");
-
-            console.log("getContext");
             MessengerExtensions.getContext('191786431454227',
                 function success(thread_context) {
-                    document.getElementById('getContext').innerText = thread_context;
+                    document.getElementById('psid').innerText = thread_context.psid;
                 },
                 function error(err) {
-                    document.getElementById('getContext').innerText = 'error: ' + err;
+                    console.log(err);
                 }
             );
-
-            console.log("getUserId");
-            MessengerExtensions.getUserID(function success(uids) {
-                // User ID was successfully obtained. 
-                var psid = uids.psid;
-                document.getElementById('getUserId').innerText = psid;
-            }, function error(err, errorMessage) {
-                // Error handling code
-                document.getElementById('getUserId').innerText = err + errorMessage;
-            });
         };
     </script>
 </head>
 
 <body>
     <form>
+        <p id="psid">
+        </p>
         <input name="class" type="text" placeholder="Lớp học phần">
         <button type="submit">Lưu</button>
     </form>
-    <p id="getContext">
-    </p>
-    <p id="getUserId"></p>
+
 </body>
 
 </html>
