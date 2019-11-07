@@ -1,12 +1,36 @@
 var data = {
     profile: {
         psid: '2159017564186704',
-        first_name: 'Trần',
-        last_name: 'Ngọc Huy',
-        profile_pic: 'https://scontent.fdad3-3.fna.fbcdn.net/v/t1.0-9/67653459_1119818788210633_7907287598006009856_n.jpg?_nc_cat=100&_nc_oc=AQmyJxubYjEwNe5mssm71hlABYlyr5OVCdL3pwdqly6rh3wI0cDqH9kZ6RL1a4KXIRs&_nc_ht=scontent.fdad3-3.fna&oh=d03787b167e329d321f12282cafb7632&oe=5E445EC0'
+        first_name: 'Người dùng',
+        last_name: 'Loa Loa Education',
+        profile_pic: '/img/no-avatar.png'
     },
-    retrieving_labels_by_psid: new Array,
-    get_all_labels: new Array
+    retrieving_labels_by_psid: [
+        {
+            id: '123456',
+            name: 'thẻ_1'
+        },
+        {
+            id: '123456',
+            name: 'thẻ_3'
+        }, {
+            id: '123456',
+            name: 'thẻ_4'
+        }
+    ],
+    get_all_labels: [
+        {
+            id: '123456',
+            name: 'thẻ_5'
+        },
+        {
+            id: '123456',
+            name: 'thẻ_6'
+        }, {
+            id: '123456',
+            name: 'thẻ_7'
+        }
+    ]
 };
 var element = {
     profile: {
@@ -24,6 +48,29 @@ var element = {
 
 }
 updateContent();
+//-----------------------------------------------------------------------------------------
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'Messenger'));
+
+window.extAsyncInit = function () {
+    MessengerExtensions.getContext('191786431454227',
+        function success(thread_context) {
+            data.profile.psid = thread_context.psid;
+        },
+        function error(err) {
+        }
+    );
+};
+
+routers.profile(profile => {
+    data.profile = profile;
+})
 routers.get_all_labels(labels => {
     data.get_all_labels = labels;
     updateContent();
@@ -57,9 +104,24 @@ function updateContent() {
     }
     //EVENT LISTENING
     $('.associate_label').click(function () {
-
+        var id = this.id;
+        var name = this.name;
+        routers.associate_label(id, name, label => {
+            routers.retrieving_labels_by_psid(data.profile.psid, labels => {
+                data.retrieving_labels_by_psid = labels;
+                updateContent();
+            })
+        })
     });
     $('.unassociate_label').click(function () {
+        var id = this.id;
+        var name = this.name;
+        routers.unassociate_label(id, name, label => {
+            routers.retrieving_labels_by_psid(data.profile.psid, labels => {
+                data.retrieving_labels_by_psid = labels;
+                updateContent();
+            })
+        })
     });
     $('#search').keyup(function () {
         var keyword = this.value;
@@ -84,20 +146,3 @@ function updateContent() {
     })
 
 }
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'Messenger'));
-
-window.extAsyncInit = function () {
-    MessengerExtensions.getContext('191786431454227',
-        function success(thread_context) {
-            data.profile.psid = thread_context.psid;
-        },
-        function error(err) {
-        }
-    );
-};

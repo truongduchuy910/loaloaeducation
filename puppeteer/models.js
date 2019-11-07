@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer');
 var database = require('./database');
+var ms = require('../messenger/models')
 module.exports = {
-    test: function () {
+    dut: function (req, res) {
         (async () => {
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
@@ -15,20 +16,35 @@ module.exports = {
                 }
                 return titles;
             });
-            var newTitles = new Array;
             titles.forEach(title => {
                 database.find({
                     title: title
                 }, (err, docs) => {
                     if (docs.length == 0) {
-                        newTitles.push(title);
+                        ms.broadcast.creating_broadcast_messages(
+                            [ms.views.dut(title)],
+                            (err, message) => {
+                                ms.broadcast.sending_broadcast_messages(
+                                    message.message_creative_id, (err, broadcast) => {
+                                        ms.db.broadcast.insertMany({
+                                            user: 'dut',
+                                            broadcast_id: broadcast.broadcast_id,
+                                            message_creative_id: message.message_creative_id
+                                        })
+                                    })
+                            }
+                        )
                         database.insertMany({ title: title }, (err, docs) => {
-                            console.log(docs);
                         })
                     }
                 })
             });
             await browser.close();
-        })();
+            res.send({
+                success: true
+            })
+        })(
+
+        );
     }
 }

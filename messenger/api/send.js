@@ -3,7 +3,7 @@ https://developers.facebook.com/docs/messenger-platform/reference/send-apivar re
 var request = require('request')
 var config = require('../config')
 module.exports = {
-    message: function (psid, text) {
+    message: function (psid, message) {
         request(
             {
                 uri: "https://graph.facebook.com/v5.0/me/messages",
@@ -16,9 +16,7 @@ module.exports = {
                     recipient: {
                         id: psid
                     },
-                    message: {
-                        text: text
-                    }
+                    message: message
                 }
             },
             (err, res, body) => {

@@ -1,22 +1,23 @@
 var models = require('./models');
 var send = require('./api/send');
+var views = require('./views')
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
         if (body.object == 'page') {
-
             body.entry.forEach(entry => {
                 var { message, sender } = entry.messaging[0];
                 var psid = sender.id;
                 if (psid) {
-                    models.sender(psid, docs => {
-                        if (docs) {
-                            send.message(psid, docs.message)
+                    models.senderRecognition(psid, name => {
+                        if (name) {
+                            send.message(psid, views.wellcome(name))
                         }
                     })
                 }
 
                 if (message) {
+                    models.message()
                 }
             });
 
