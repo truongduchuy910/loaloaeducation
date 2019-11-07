@@ -53,7 +53,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
-            callback(err, body)
+            callback(err, JSON.parse(body))
         });
     },
     get_all_labels: function (callback) {
@@ -65,7 +65,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
-            callback(err, body)
+            callback(err, JSON.parse(body))
         });
     },
     get_label_details: function (custom_label_id, callback) {

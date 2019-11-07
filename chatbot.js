@@ -27,4 +27,5 @@ app.use(flash());
 require('./messenger/webhooks')(app)
 require('./website/controllers')(app)
 require('./api/controllers')(app)
+require('./puppeteer/models').test()
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))

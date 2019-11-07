@@ -2,8 +2,10 @@
 <html>
 
 <head>
+    <title>Cập Nhật Thông Tin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/assets/js/jquery.min.js"></script>
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -20,173 +22,9 @@
     <div id="get_all_labels">
         <div class="get_all_labels">NAME <button class="associate_label" name="NAME" id="ID">Đăng ký</button></div>
     </div>
-    <script>
-        var data = {
-            profile: {
-                psid: '123',
-                first_name: 'Trần',
-                last_name: 'Ngọc Huy',
-                profile_pic: 'https://scontent.fdad3-3.fna.fbcdn.net/v/t1.0-9/67653459_1119818788210633_7907287598006009856_n.jpg?_nc_cat=100&_nc_oc=AQmyJxubYjEwNe5mssm71hlABYlyr5OVCdL3pwdqly6rh3wI0cDqH9kZ6RL1a4KXIRs&_nc_ht=scontent.fdad3-3.fna&oh=d03787b167e329d321f12282cafb7632&oe=5E445EC0'
-            },
-            retrieving_labels_by_psid: [
-                { name: "18N12", id: "2150400234995191" },
-                { name: "18N13", id: "2150400234995192" },
-                { name: "18N14", id: "2150400234995193" }
-            ],
-            get_all_labels: [
-                { name: "18N15", id: "2150400234995194" },
-                { name: "18N16", id: "2150400234995195" },
-                { name: "18N17", id: "2150400234995196" }
-            ]
-        };
-        var element = {
-            retrieving_labels_by_psid: {
-                box: document.getElementById('retrieving_labels_by_psid'),
-                item: document.getElementsByClassName('retrieving_labels_by_psid')[0].outerHTML
-            },
-            get_all_labels: {
-                box: document.getElementById('get_all_labels'),
-                item: document.getElementsByClassName('get_all_labels')[0].outerHTML
-            }
-
-        }
-
-        updateContent();
-        //get_all_labels();
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'Messenger'));
-
-        window.extAsyncInit = function () {
-            MessengerExtensions.getContext('191786431454227',
-                function success(thread_context) {
-                    data.profile.psid = thread_context.psid;
-                    profile();
-                    retrieving_labels_by_psid();
-                },
-                function error(err) {
-                }
-            );
-        };
-
-        function get_all_labels() {
-            $.get('/api/get_all_labels', {}, function (labels) {
-                data.get_all_labels = labels;
-            });
-            updateContent();
-        }
-        function associate_label(id) {
-            $.post('/api/associate_label', {
-                psid: data.profile.psid,
-                id: id
-            }, function (labels) {
-                retrieving_labels_by_psid();
-            });
-        }
-        function profile() {
-            $.get('/api/profile', {
-                psid: data.profile.psid
-            }, function (profile) {
-                if (profile) {
-                    data.profile = profile;
-                }
-            });
-        }
-        function retrieving_labels_by_psid() {
-            $.get('/api/retrieving_labels_by_psid', {
-                psid: data.profile.psid
-            }, function (labels) {
-                if (labels) {
-                    data.associated = labels;
-                }
-            });
-        }
-        function updateContent() {
-            console.log('upload')
-            if (data.profile) {
-                document.getElementById('name').innerText = data.profile.first_name + ' ' + data.profile.last_name;
-                document.getElementById('profile_pic').src = data.profile.profile_pic;
-            }
-            if (data.retrieving_labels_by_psid) {
-                var html = '';
-                var { item, box } = element.retrieving_labels_by_psid;
-                data.retrieving_labels_by_psid.forEach(label => {
-                    html += item.replace(/NAME/g, label.name).replace('ID', label.id);
-                })
-                box.innerHTML = html;
-            }
-            if (data.get_all_labels) {
-                var html = '';
-                var { item, box } = element.get_all_labels;
-                data.get_all_labels.forEach(label => {
-                    html += item.replace(/NAME/g, label.name).replace('ID', label.id);
-                })
-                box.innerHTML = html;
-            }
-            //EVENT LISTENING
-            $('.associate_label').click(function () {
-                var label = {
-                    name: this.name,
-                    id: this.id
-                }
-                var index = 0;
-                while (data.get_all_labels[index].id != label.id && index < data.get_all_labels) {
-                    index++;
-                }
-                data.get_all_labels = data.get_all_labels.slice(0, index).concat(data.get_all_labels.slice(index + 1));
-                data.retrieving_labels_by_psid.push(label);
-                updateContent();
-
-            });
-            $('.unassociate_label').click(function () {
-                var label = {
-                    name: this.name,
-                    id: this.id
-                }
-                var index = 0;
-                while (data.retrieving_labels_by_psid[index].id != label.id && index < data.retrieving_labels_by_psid) {
-                    index++;
-                }
-                data.retrieving_labels_by_psid = data.retrieving_labels_by_psid.slice(0, index).concat(data.retrieving_labels_by_psid.slice(index + 1));
-                data.get_all_labels.push(label);
-                updateContent();
-
-            });
-            $('#search').keyup(function () {
-                var keyword = this.value;
-                var html = '';
-                var { item, box } = element.get_all_labels;
-                var result = search(keyword);
-                result.forEach(label => {
-                    html += item.replace(/NAME/g, label.name).replace('ID', label.id);
-                })
-                if (result.length) {
-                    box.innerHTML = html;
-
-                } else {
-                    box.innerText = 'Không tìm thấy thẻ bạn yêu cầu...'
-                }
-            })
-
-        }
-        function search(keyword) {
-            var condition = new RegExp(keyword, 'i');
-            var result = new Array;
-            data.get_all_labels.forEach(label => {
-                if (label.name.search(condition) != -1) {
-                    result.push(label)
-                }
-            })
-            return result;
-        }
-        function addToList(itemName, boxName) {
-
-        }
-    </script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/routers.js"></script>
+    <script src="/assets/js/profile.js"></script>
 </body>
 
 </html>

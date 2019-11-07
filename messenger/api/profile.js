@@ -52,8 +52,6 @@ module.exports = {
                 ]
             }
         }, (err, res, body) => {
-            console.log("done persistent");
-            console.log(err, body);
         })
     },
     greeting: function () {
