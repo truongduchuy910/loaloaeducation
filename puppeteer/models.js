@@ -6,7 +6,7 @@ module.exports = {
         (async () => {
             const browser = await puppeteer.launch();
             const page = await browser.newPage();
-            await page.goto('file:///home/truongduchuy910/apps/loaloa/testHtml/G_Thongbao.aspx.html');
+            await page.goto('http://sv.dut.udn.vn/G_Thongbao.aspx');
 
             // Get the "viewport" of the page, as reported by the page.
             const titles = await page.evaluate(() => {
