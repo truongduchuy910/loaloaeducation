@@ -18,6 +18,19 @@ var data = {
             name: 'thẻ_4'
         }
     ],
+    showLabels: [
+        {
+            id: '123456',
+            name: 'thẻ_5'
+        },
+        {
+            id: '123456',
+            name: 'thẻ_6'
+        }, {
+            id: '123456',
+            name: 'thẻ_7'
+        }
+    ],
     get_all_labels: [
         {
             id: '123456',
@@ -94,8 +107,6 @@ function updateContent() {
     });
     $('#search').keyup(function () {
         var keyword = this.value;
-        var html = '';
-        var { item, box } = element.get_all_labels;
         var condition = new RegExp(keyword, 'i');
         var result = new Array;
         data.get_all_labels.forEach(label => {
@@ -103,7 +114,10 @@ function updateContent() {
                 result.push(label)
             }
         });
-        result.forEach(label => {
+
+        var { item, box } = element.get_all_labels;
+        var html = '';
+        data.get_all_labels.forEach(label => {
             html += item.replace(/NAME/g, label.name).replace('ID', label.id);
         })
         if (result.length) {
