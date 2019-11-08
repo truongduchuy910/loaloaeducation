@@ -1,11 +1,12 @@
 var { identity, labels } = require('../messenger/models').public;
+var ms = require('../messenger/models').public;
 module.exports = function (app) {
     app
         .get('/api/profile', (req, res) => {
             console.log(req.query);
             var { psid } = req.query;
             if (psid) {
-                identity.profile(psid, (err, docs) => {
+                ms.db.sender.findOne({ psid: psid }, (err, docs) => {
                     res.send(docs);
                 })
             } else {
