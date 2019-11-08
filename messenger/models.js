@@ -3,10 +3,10 @@ var profile = require('./api/profile');
 var identity = require('./api/identity');
 var broadcast = require('./api/broadcast');
 var views = require('./views');
-
+var db = require('./database');
 module.exports = {
-    db: require('./database'),
     public: {
+        db: db,
         identity: identity,
         labels: labels,
         broadcast: broadcast,

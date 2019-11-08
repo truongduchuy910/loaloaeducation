@@ -1,14 +1,12 @@
 const puppeteer = require('puppeteer');
 var database = require('./database');
-var ms = require('../messenger/models')
+var ms = require('../messenger/models').public
 module.exports = {
     dut: function (req, res) {
         (async () => {
             const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
             const page = await browser.newPage();
             await page.goto('http://sv.dut.udn.vn/G_Thongbao.aspx');
-
-            // Get the "viewport" of the page, as reported by the page.
             const titles = await page.evaluate(() => {
                 var titles = [...document.getElementsByClassName('MsoNormal')]
                 for (var i = 0; i < titles.length; i++) {
