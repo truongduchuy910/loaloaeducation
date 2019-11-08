@@ -10,7 +10,7 @@ module.exports = function (app) {
                 var psid = sender.id;
                 if (psid) {
                     if (message) {
-                        models.message(psid, message)
+                        models.message(psid, message.text)
                     }
                 }
                 if (postback) {
