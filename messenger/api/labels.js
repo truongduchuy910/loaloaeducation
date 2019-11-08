@@ -15,6 +15,7 @@ module.exports = {
                 }
             },
             (err, res, body) => {
+                console.log('create_label', err, body)
                 callback(err, body);
             }
         )
@@ -28,6 +29,7 @@ module.exports = {
                 user: psid
             }
         }, (err, res, body) => {
+            console.log('associate_label', err, body)
             callback(err, body)
         }
         );
@@ -53,6 +55,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
+            console.log('retrieving_labels_by_psid', err, body)
             callback(err, JSON.parse(body))
         });
     },
@@ -65,6 +68,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
+            console.log('get_all_labels', err, body)
             callback(err, JSON.parse(body))
         });
     },
@@ -77,6 +81,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
+            console.log('get_label_details', err, body)
             callback(err, body)
         });
     }
@@ -89,6 +94,7 @@ module.exports = {
             },
             method: "DELETE"
         }, (err, res, body) => {
+            console.log('delete_label', err, body)
             callback(err, body)
         });
     }
