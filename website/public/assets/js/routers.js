@@ -1,18 +1,22 @@
 var routers = {
     profile: function (callback) {
         $.get('/api/profile', {
+            event: 'profile',
             psid: data.profile.psid
         }, function (profile) {
             callback(profile);
         });
     },
     get_all_labels: function (callback) {
-        $.get('/api/get_all_labels', {}, function (labels) {
+        $.get('/api/get_all_labels', {
+            event: 'get_all_labels',
+        }, function (labels) {
             callback(labels);
         });
     },
     retrieving_labels_by_psid: function (psid, callback) {
         $.get('/api/retrieving_labels_by_psid', {
+            event: 'retrieving_labels_by_psid',
             psid: psid
         }, function (labels) {
             if (labels) {
@@ -22,6 +26,7 @@ var routers = {
     },
     associate_label: function (id, name, callback) {
         $.post('/api/associate_label', {
+            event: 'associate_label',
             psid: data.profile.psid,
             id: id,
             name: name
@@ -31,6 +36,7 @@ var routers = {
     },
     unassociate_label: function (id, name, callback) {
         $.post('/api/unassociate_label', {
+            event: 'unassociate_label',
             psid: data.profile.psid,
             id: id,
             name: name
