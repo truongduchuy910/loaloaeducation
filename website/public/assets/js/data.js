@@ -117,7 +117,7 @@ function updateContent() {
 
         var { item, box } = element.get_all_labels;
         var html = '';
-        data.get_all_labels.forEach(label => {
+        result.forEach(label => {
             html += item.replace(/NAME/g, label.name).replace('ID', label.id);
         })
         if (result.length) {
