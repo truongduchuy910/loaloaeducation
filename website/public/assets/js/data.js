@@ -1,6 +1,6 @@
 var data = {
     profile: {
-        psid: '2159017564186704',
+        psid: String,
         first_name: 'Người dùng',
         last_name: 'Loa Loa Education',
         profile_pic: '/img/no-avatar.png'
