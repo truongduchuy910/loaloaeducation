@@ -1,5 +1,7 @@
 routers.get_all_labels(labels => {
     data.get_all_labels = labels;
+    data.showLabels = labels;
+
     updateContent();
 });
 (function (d, s, id) {

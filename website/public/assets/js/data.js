@@ -79,7 +79,7 @@ function updateContent() {
     if (data.get_all_labels) {
         var { item, box } = element.get_all_labels;
         var html = '';
-        data.get_all_labels.forEach(label => {
+        data.showLabels.forEach(label => {
             html += item.replace(/NAME/g, label.name).replace('ID', label.id);
         })
         box.innerHTML = html;
@@ -115,14 +115,10 @@ function updateContent() {
             }
         });
 
-        var { item, box } = element.get_all_labels;
-        var html = '';
-        result.forEach(label => {
-            html += item.replace(/NAME/g, label.name).replace('ID', label.id);
-        })
-        if (result.length) {
-            box.innerHTML = html;
 
+        if (result.length) {
+            data.showLabels = result;
+            updateContent();
         } else {
             box.innerText = 'Không tìm thấy thẻ bạn yêu cầu...'
         }
