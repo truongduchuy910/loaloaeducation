@@ -6,7 +6,7 @@ module.exports = function (app) {
         let body = req.body;
         if (body.object == 'page') {
             body.entry.forEach(entry => {
-                var { message, sender } = entry.messaging[0];
+                var { message, sender, postback } = entry.messaging[0];
                 var psid = sender.id;
                 if (psid) {
                     models.senderRecognition(psid, name => {
@@ -18,6 +18,9 @@ module.exports = function (app) {
 
                 if (message) {
                     models.message()
+                }
+                if (postback) {
+                    console.log(postback)
                 }
             });
 

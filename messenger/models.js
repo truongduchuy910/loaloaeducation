@@ -1,5 +1,6 @@
 var labels = require('./api/labels');
 var profile = require('./api/profile');
+//profile();
 var identity = require('./api/identity');
 var broadcast = require('./api/broadcast');
 var views = require('./views');
@@ -18,6 +19,7 @@ module.exports = {
             if (users.length) {
                 callback(null);
             } else {
+                console.log('new user');
                 identity.profile(psid, (err, profile) => {
                     db.sender.insertMany({
                         psid: psid,
