@@ -50,6 +50,10 @@ var element = {
 updateContent();
 //-----------------------------------------------------------------------------------------
 
+routers.get_all_labels(labels => {
+    data.get_all_labels = labels;
+    updateContent();
+});
 (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) { return; }
@@ -62,23 +66,21 @@ window.extAsyncInit = function () {
     MessengerExtensions.getContext('191786431454227',
         function success(thread_context) {
             data.profile.psid = thread_context.psid;
+            routers.profile(profile => {
+                data.profile = profile;
+            })
+            routers.retrieving_labels_by_psid(data.profile.psid, (labels) => {
+                data.retrieving_labels_by_psid = labels;
+                updateContent();
+            })
         },
         function error(err) {
         }
     );
 };
 
-routers.profile(profile => {
-    data.profile = profile;
-})
-routers.get_all_labels(labels => {
-    data.get_all_labels = labels;
-    updateContent();
-});
-routers.retrieving_labels_by_psid(data.profile.psid, (labels) => {
-    data.retrieving_labels_by_psid = labels;
-    updateContent();
-})
+
+
 function updateContent() {
 
     if (data.profile) {
