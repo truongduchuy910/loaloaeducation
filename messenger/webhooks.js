@@ -9,11 +9,9 @@ module.exports = function (app) {
                 var { message, sender, postback } = entry.messaging[0];
                 var psid = sender.id;
                 if (psid) {
-
-                }
-
-                if (message) {
-                    models.message()
+                    if (message) {
+                        models.message(psid, message)
+                    }
                 }
                 if (postback) {
                     if (postback.payload == 'GET_STARTED') {

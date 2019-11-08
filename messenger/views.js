@@ -1,9 +1,7 @@
 module.exports = {
     wellcome: function (name) {
         return {
-            message: {
-                text: `Chào mừng ${name} đến với Loa Loa Education. Rất cảm ơn bạn đã ủng hộ ứng dụng!`
-            }
+            text: `Chào mừng ${name} đến với Loa Loa Education. Rất cảm ơn bạn đã ủng hộ ứng dụng!`
         }
     },
     dut: function (text) {

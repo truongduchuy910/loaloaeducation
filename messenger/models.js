@@ -5,6 +5,7 @@ var identity = require('./api/identity');
 var broadcast = require('./api/broadcast');
 var views = require('./views');
 var db = require('./database');
+var send = require('./api/send')
 module.exports = {
     public: {
         db: db,
@@ -13,12 +14,10 @@ module.exports = {
         broadcast: broadcast,
         views: views
     },
-    senderRecognition: function (psid, callback) {
+    senderRecognition: function (psid) {
 
         db.sender.find({ psid: psid }, (err, users) => {
-            if (users.length) {
-                callback(null);
-            } else {
+            if (users.length == 0) {
                 console.log('new user');
                 identity.profile(psid, (err, profile) => {
                     db.sender.insertMany({
@@ -28,7 +27,6 @@ module.exports = {
                         profile_pic: profile.profile_pic
                     }, (err, newUser) => {
                         console.log('inserMany: ', newUser)
-                        callback(newUser.first_name + ' ' + newUser.last_name)
                     })
                 })
 
@@ -36,8 +34,10 @@ module.exports = {
         })
 
     },
-    message: function (callback) {
-        return;
+    message: function (psid, message) {
+        send.message(psid, {
+            text: message + ' là cái gì mầy?'
+        })
     }
 
 }
