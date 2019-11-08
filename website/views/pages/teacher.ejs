@@ -7,7 +7,6 @@
     <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="/assets/css/main.css" rel="stylesheet">
-    <link href="/assets/css/profile.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,7 +19,8 @@
                 </div>
                 <div class="col-10">
                     <div class="h-100 d-flex align-items-center justify-content-center">
-                        <p class="m-0 p-0" id="name"></p>
+                        <p class="m-0 p-0" id="name"><%=user.email%></p>
+                        <a href="/authentication/logout">Logout</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
     </div>
 
     <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/profile.js"></script>
+    <script src="/assets/js/teacher.js"></script>
 </body>
 
 </html>

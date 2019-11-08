@@ -1,0 +1,28 @@
+
+.profile-box {
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#profile_pic {
+    background-color: white;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#search {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+
+.retrieving_labels_by_psid, .get_all_labels {
+    margin-bottom: 15px;
+}
+
+.label {
+    padding: 0px;
+    margin: 0px;
+}

@@ -7,41 +7,41 @@ var data = {
     },
     retrieving_labels_by_psid: [
         {
-            id: '123456',
-            name: 'thẻ_1'
+            id: 'đang tải...',
+            name: 'đang tải...'
         },
         {
-            id: '123456',
-            name: 'thẻ_3'
+            id: 'đang tải...',
+            name: 'đang tải...'
         }, {
-            id: '123456',
-            name: 'thẻ_4'
+            id: 'đang tải...',
+            name: 'đang tải...'
         }
     ],
     showLabels: [
         {
-            id: '123456',
-            name: 'thẻ_5'
+            id: 'đang tải...',
+            name: 'đang tải...'
         },
         {
-            id: '123456',
-            name: 'thẻ_6'
+            id: 'đang tải...',
+            name: 'đang tải...'
         }, {
-            id: '123456',
-            name: 'thẻ_7'
+            id: 'đang tải...',
+            name: 'đang tải...'
         }
     ],
     get_all_labels: [
         {
-            id: '123456',
-            name: 'thẻ_5'
+            id: 'đang tải...',
+            name: 'đang tải...'
         },
         {
-            id: '123456',
-            name: 'thẻ_6'
+            id: 'đang tải...',
+            name: 'đang tải...'
         }, {
-            id: '123456',
-            name: 'thẻ_7'
+            id: 'đang tải...',
+            name: 'đang tải...'
         }
     ]
 };

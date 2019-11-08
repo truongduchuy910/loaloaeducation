@@ -15,23 +15,23 @@ module.exports = function (passport) {
         });
     });
 
-    passport.use('local-admin-login', new LocalStrategy({
+    passport.use('local-login', new LocalStrategy({
         usernameField: 'user',
         passwordField: 'password',
         passReqToCallback: true
     },
         function (req, email, password, done) {
-            database.findOne({ 'local.email': email }, function (err, docs) {
+            database.findOne({ 'local.email': email }, function (err, user) {
                 if (err) {
                     return done(err);
                 }
-                if (!docs) {
-                    return done(null, false, req.flash('loginMessage', 'Không tìm thấy tài khoản'));
+                if (!user) {
+                    return done(null, false, req.flash('login', 'Không tìm thấy tài khoản'));
                 }
-                if (docs.password || docs.local.password != password) {
-                    return done(null, false, req.flash('loginMessage', 'Mật khẩu chưa đúng'));
+                if (user.local.password != password) {
+                    return done(null, false, req.flash('login', 'Mật khẩu chưa đúng'));
                 }
-                return done(null, docs);
+                return done(null, user);
             });
         }));
     passport.use('local-signup', new LocalStrategy({
@@ -45,7 +45,7 @@ module.exports = function (passport) {
                     if (err)
                         return done(err);
                     if (user) {
-                        return done(null, false, req.flash('signupMessage', 'Email  đã tồn tại .'));
+                        return done(null, false, req.flash('signup', 'Email  đã tồn tại .'));
                     } else {
                         var newUser = new database();
                         newUser.local.email = email;
