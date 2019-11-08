@@ -55,7 +55,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
-            console.log('retrieving_labels_by_psid', err, body)
+            console.log('retrieving_labels_by_psid', err, body.data)
             callback(err, JSON.parse(body))
         });
     },
@@ -68,7 +68,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
-            console.log('get_all_labels', err, body)
+            console.log('get_all_labels', err, body.data)
             callback(err, JSON.parse(body))
         });
     },
@@ -81,7 +81,7 @@ module.exports = {
             },
             method: "GET",
         }, (err, res, body) => {
-            console.log('get_label_details', err, body)
+            console.log('get_label_details', err, body.data)
             callback(err, body)
         });
     }
@@ -94,7 +94,7 @@ module.exports = {
             },
             method: "DELETE"
         }, (err, res, body) => {
-            console.log('delete_label', err, body)
+            console.log('delete_label', err, body.data)
             callback(err, body)
         });
     }

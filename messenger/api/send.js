@@ -20,7 +20,7 @@ module.exports = {
                 }
             },
             (err, res, body) => {
-                console.log('message ', psid, ': ', err, body);
+                console.log('message ', psid, ': ', err, body.data);
             }
         )
     },
