@@ -12,6 +12,7 @@ module.exports = {
                 messages: messages
             }
         }, (err, res, body) => {
+            console.log('creating_broadcast_messages', err, body)
             callback(err, body);
 
         });
@@ -28,6 +29,7 @@ module.exports = {
 
             }
         }, (err, res, body) => {
+            console.log('sending_broadcast_messages_with_labe', err, body)
             callback(err, body);
         });
     },
@@ -44,6 +46,7 @@ module.exports = {
 
             }
         }, (err, res, body) => {
+            console.log('sending_broadcast_messages', err, body)
             callback(err, body);
         });
     }
