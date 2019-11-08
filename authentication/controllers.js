@@ -18,7 +18,7 @@ module.exports = function (app) {
             failureFlash: true
         }));
     app.post('/authentication/login', passport.authenticate('local-login', {
-        successRedirect: '/messenger/teacher',
+        successRedirect: '/messenger/broadcast',
         failureRedirect: '/messenger/login',
         failureFlash: true
     })
