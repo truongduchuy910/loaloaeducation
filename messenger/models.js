@@ -25,6 +25,7 @@ module.exports = {
                         last_name: profile.last_name,
                         profile_pic: profile.profile_pic
                     }, (err, newUser) => {
+                        console.log('inserMany: ', docs)
                         callback(newUser.first_name + ' ' + newUser.last_name)
                     })
                 })
