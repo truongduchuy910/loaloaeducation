@@ -1,3 +1,5 @@
+var formidable = require('formidable');
+var fs = require('fs');
 module.exports = function (app) {
     app.get('/messenger/profile', function (req, res) {
         res.render("pages/profile")
@@ -10,8 +12,30 @@ module.exports = function (app) {
         function (req, res) {
             res.render("pages/signup", { message: req.flash('signup') })
         })
-    app.get('/messenger/broadcast', loggedIn, function (req, res) {
-        res.render("pages/broadcast", { user: req.user })
+    app.get('/messenger/broadcast', function (req, res) {
+        res.render("pages/broadcast", { user: { email: 'dut' } })
+    })
+    app.post('/messenger/upload', function (req, res) {
+        var form = new formidable.IncomingForm();
+        form.uploadDir = "./website/public/upload";
+        form.keepExtensions = true;
+
+        form.parse(req, function (err, fields, files) {
+            if (err) throw err;
+            var oldpath = files.datafile.path;
+            var newpath = 'website/public/' + fields.psid + '/' + files.datafile.name;
+            fs.mkdir('website/public/' + fields.psid, { recursive: true }, (err) => {
+                fs.rename(oldpath, newpath, function (err) {
+                    if (err) throw err;
+                    res.write('Tải lên thành công!');
+                    res.end();
+                });
+            });
+
+
+
+        });
+
     })
     function loggedIn(req, res, next) {
         if (req.user) {

@@ -17,7 +17,7 @@ module.exports = function (app) {
                     if (postback.payload == 'GET_STARTED') {
                         models.senderRecognition(psid, name => {
                             if (name) {
-                                send.message(psid, views.wellcome(name))
+                             //   send.message(psid, views.wellcome(name))
                             }
                         })
                     }

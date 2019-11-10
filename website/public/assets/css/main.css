@@ -6,6 +6,13 @@ body {
     padding-top: 15px;
 }
 
+.box {
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
 .head-box {
     background-color: #f6f6f6;
     border-radius: 10px 10px 0px 0px;
@@ -47,4 +54,23 @@ body {
 
 .btn:hover {
     background-position: right center;
+}
+
+.input {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent !important;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent !important;
+    padding: 5px;
+    border-radius: 5px;
 }

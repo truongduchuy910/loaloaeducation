@@ -153,6 +153,7 @@ window.extAsyncInit = function () {
             })
         },
         function error(err) {
+            alert(err)
         }
     );
 };

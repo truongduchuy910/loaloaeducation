@@ -9,13 +9,3 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-
-.input {
-    width: 100%;
-    outline: none;
-    border: none;
-    background-color: transparent !important;
-    margin-bottom: 15px;
-    padding: 5px;
-    border-radius: 5px;
-}
