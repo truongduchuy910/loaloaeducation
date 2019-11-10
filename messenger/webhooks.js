@@ -10,14 +10,14 @@ module.exports = function (app) {
                 var psid = sender.id;
                 if (psid) {
                     if (message) {
-                        models.message(psid, message.text)
+                        //     models.message(psid, message.text)
                     }
                 }
                 if (postback) {
                     if (postback.payload == 'GET_STARTED') {
                         models.senderRecognition(psid, name => {
                             if (name) {
-                             //   send.message(psid, views.wellcome(name))
+                                //   send.message(psid, views.wellcome(name))
                             }
                         })
                     }
