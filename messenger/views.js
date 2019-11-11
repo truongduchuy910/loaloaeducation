@@ -23,7 +23,12 @@ module.exports = {
             }
         }
     },
-    loaloa: function (text, url) {
+    text: function (text) {
+        return {
+            text: text,
+        }
+    },
+    attachment: function (text, url) {
         return {
             text: text,
             attachment: {

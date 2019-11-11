@@ -1,5 +1,6 @@
 var formidable = require('formidable');
 var fs = require('fs');
+var models = require('./models')
 module.exports = function (app) {
     app.get('/messenger/profile', function (req, res) {
         res.render("pages/profile")
@@ -13,7 +14,7 @@ module.exports = function (app) {
             res.render("pages/signup", { message: req.flash('signup') })
         })
     app.get('/messenger/broadcast', loggedIn, function (req, res) {
-        res.render("pages/broadcast", { user: { email: 'dut' } })
+        res.render("pages/broadcast", { user: req.user })
     })
     app.post('/messenger/upload', function (req, res) {
         var form = new formidable.IncomingForm();

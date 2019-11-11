@@ -1,5 +1,8 @@
 var { identity, labels } = require('../messenger/models').public;
 var ms = require('../messenger/models').public;
+var models = require('./models');
+var formidable = require('formidable');
+
 module.exports = function (app) {
     app
         .get('/api/profile', (req, res) => {
@@ -66,6 +69,18 @@ module.exports = function (app) {
         .post('/api/err', (req, res) => {
             console.log('api err: ', req.body, req.query)
             res.send();
+        })
+        .post('/api/broadcast', function (req, res) {
+            var form = new formidable.IncomingForm();
+            form.uploadDir = "./website/public/upload";
+            form.keepExtensions = true;
+
+            form.parse(req, function (err, fields, files) {
+                if (err) throw err;
+                models.broadcast(fields.labels.split(","), fields.user, fields.text, files)
+                res.redirect('/messenger/broadcast')
+            });
+
         })
 
 }

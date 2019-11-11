@@ -16,51 +16,40 @@
 <body class="pb-5">
 
     <div class="container">
-
-        <div class="box">
-            <textarea placeholder="Nhập nội dung..."></textarea>
-        </div>
-        <!-- 
-        <div class="box">
-            <form>
-                <input type="file" name="datafile" /></br>
-                <input name="psid" value="343242343" style="display: none;">
-
-                <input class="btn btn-remove" type="button" value="Tải tệp lên"
-                    onClick="fileUpload(this.form,'/messenger/upload','upload'); return false;">
-                <div id="upload"></div>
-            </form>
-        </div> -->
-
-        <div class="head-box py-3">
-            <input class="input" autocomplete="off" id="search" type="text" placeholder="Tìm kiếm trong tệp của bạn..">
-        </div>
-        <div class="body-box">
-            <div class="d-flex justify-content-between mb-3">
-                <p class="m-0 p-0">Thêm tệp mới</p>
-                <a class="btn btn-sm text-white associate_label btn-add" name="NAME" path="PATH">Chọn</a>
+        <form action="/api/broadcast" enctype="multipart/form-data" method="POST">
+            <div class="box">
+                <textarea name="text" placeholder="Nhập nội dung..."></textarea>
             </div>
-            <div id="files">
-                <div class="files d-flex justify-content-between mb-3">
-                    <p class="m-0 p-0">NAME</p>
-                    <a class="btn btn-sm text-white associate_label btn-save" name="NAME" path="PATH">Đính kèm</a>
+            <div class="box">
+                <label>Chọn tệp đính kèm:</label>
+                <input name="upload" type="file">
+            </div>
+
+            <div class="head-box py-3">
+                <input class="input" autocomplete="off" id="search" type="text" placeholder="Tìm kiếm thẻ..">
+            </div>
+            <div class="body-box">
+
+                <div id="get_all_labels">
+                    <div class="get_all_labels d-flex justify-content-between mb-3">
+                        <p class="m-0 p-0">NAME</p>
+                        <btn class="btn btn-sm text-white choose btn-save" label="NAME" id="ID">Chọn</btn>
+                    </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="head-box py-3">
-            <input class="input" autocomplete="off" id="search" type="text" placeholder="Tìm kiếm thẻ..">
-        </div>
-        <div class="body-box">
-
-            <div id="get_all_labels">
-                <div class="get_all_labels d-flex justify-content-between mb-3">
-                    <p class="m-0 p-0">NAME</p>
-                    <a class="btn btn-sm text-white associate_label btn-save" name="NAME" id="ID">Gửi</a>
+            <div class="box">
+                <div id="labels">
+                    <div class="labels d-flex justify-content-between mb-3">
+                        <p class="m-0 p-0">NAME</p>
+                        <btn class="btn btn-sm text-white remove btn-remove" label="NAME" id="ID">Gỡ</btn>
+                    </div>
                 </div>
+                <input id="choose" name="labels" style="display: none;">
+                <input name="user" value="<%=user.local.email%>" style="display: none;">
+                <button type="submit" class="btn btn btn-add w-100">Gửi đến các thẻ trên</button>
             </div>
-        </div>
+        </form>
+
     </div>
     <footer class="fixed-bottom container">
         <div class="black-box text-white d-flex justify-content-center">
@@ -70,9 +59,7 @@
             <div class="btn-0 mx-3">
                 Đã gửi
             </div>
-            <div class="btn-0 mx-3">
-                Tệp
-            </div>
+
         </div>
     </footer>
 

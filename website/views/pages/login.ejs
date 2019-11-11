@@ -12,27 +12,28 @@
 <body>
     <div class="container">
         <div class="login-box">
-            <p class="text-center">Đăng nhập</ph3>
+            <h4 class="text-center">Xin chào!</h4>
+            <hr />
+
+            <form method="post" action="/authentication/login">
+                <input class="input" name="user" type="text" placeholder="Tài Khoản">
+                <input class="input" name="password" type="password" placeholder="Mật Khẩu">
+                <button type="submit" class="btn btn-sm btn-login">Đăng Nhập</button>
                 <hr />
 
-                <form method="post" action="/authentication/login">
-                    <input class="input" name="user" type="text" placeholder="Tài Khoản">
-                    <input class="input" name="password" type="password" placeholder="Mật Khẩu">
-                    <button type="submit" class="btn btn-login">Đăng Nhập</button>
-                    <hr />
+                <!-- <a href="/messenger/signup">Đăng ký</a> -->
 
-                    <!-- <a href="/messenger/signup">Đăng ký</a> -->
-
-                    <%if (message && message[0]) {%>
-                    <p><%=message[0]%></p>
-                    <%}%>
+                <%if (message && message[0]) {%>
+                <p><%=message[0]%></p>
+                <%}%>
                         </form>
-                </div>
+        <img src="/assets/img/baymax-hello.jpg" class="w-100">
+        </div>
     </div>
   
 
     <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/login.js"></script>
+    <!-- <script src="/assets/js/login.js"></script> -->
 </body>
 
 </html>
