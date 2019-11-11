@@ -13,19 +13,19 @@
     <div class="container">
         <div class="login-box">
             <p class="text-center">Đăng nhập</ph3>
-            <hr />
-
-            <form method="post" action="/authentication/login">
-                <input class="input" name="user" type="text" placeholder="Tài Khoản">
-                <input class="input" name="password" type="password" placeholder="Mật Khẩu">
-                <button type="submit" class="btn btn-login">Đăng Nhập</button>
                 <hr />
 
-                <a href="/messenger/signup">Đăng ký</a>
+                <form method="post" action="/authentication/login">
+                    <input class="input" name="user" type="text" placeholder="Tài Khoản">
+                    <input class="input" name="password" type="password" placeholder="Mật Khẩu">
+                    <button type="submit" class="btn btn-login">Đăng Nhập</button>
+                    <hr />
 
-                <%if (message && message[0]) {%>
-                <p><%=message[0]%></p>
-                <%}%>
+                    <!-- <a href="/messenger/signup">Đăng ký</a> -->
+
+                    <%if (message && message[0]) {%>
+                    <p><%=message[0]%></p>
+                    <%}%>
                         </form>
                 </div>
     </div>
