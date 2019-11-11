@@ -63,5 +63,9 @@ module.exports = function (app) {
                 res.send(null);
             }
         })
+        .post('/api/err', (req, res) => {
+            console.log('api err: ', req.body, req.query)
+            res.send();
+        })
 
 }

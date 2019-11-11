@@ -45,6 +45,13 @@ var routers = {
             callback(docs);
 
         });
+    },
+    err: function (err) {
+        $.post('/api/err', {
+            err: err
+        }, function (docs) {
+            callback(docs);
+        });
     }
 }
 
@@ -203,7 +210,7 @@ window.extAsyncInit = function () {
             })
         },
         function error(err) {
-            alert(err)
+            routers.err(err)
         }
     );
 };
