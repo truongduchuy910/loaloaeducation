@@ -201,13 +201,16 @@ window.extAsyncInit = function () {
     MessengerExtensions.getContext('191786431454227',
         function success(thread_context) {
             data.profile.psid = thread_context.psid;
-            routers.profile(profile => {
-                data.profile = profile;
-            })
             routers.retrieving_labels_by_psid(data.profile.psid, (labels) => {
                 data.retrieving_labels_by_psid = labels;
                 updateContent();
             })
+            routers.profile(profile => {
+                data.profile = profile;
+                updateContent();
+
+            })
+
         },
         function error(err) {
             routers.err(err)
