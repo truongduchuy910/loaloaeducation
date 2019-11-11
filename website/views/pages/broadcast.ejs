@@ -13,41 +13,14 @@
 
 </head>
 
-<body>
+<body class="pb-5">
 
     <div class="container">
-
-
-        <div class="profile-box">
-            <div class="row no-gutters">
-                <div class="col-2">
-                    <img id="profile_pic" class="card-img">
-                </div>
-                <div class="col-10">
-                    <div class="h-100 d-flex align-items-center justify-content-center">
-                        <p class="m-0 p-0" id="name"><%=user.email%></p>
-                        <a href="/authentication/logout">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="head-box py-3">
-            <!-- <p class="text-center m-0 text-uppercase">Thẻ đã đăng ký</p> -->
-        </div>
-
-        <div class="body-box">
-            <div id="retrieving_labels_by_psid">
-                <div class="retrieving_labels_by_psid d-flex justify-content-between">
-                    <p class="m-0 p-0">NAME</p>
-                    <a class="btn btn-sm text-white unassociate_label btn-remove" name="NAME" id="ID">Bỏ theo dõi</a>
-                </div>
-            </div>
-        </div>
 
         <div class="box">
             <textarea placeholder="Nhập nội dung..."></textarea>
         </div>
-
+        <!-- 
         <div class="box">
             <form>
                 <input type="file" name="datafile" /></br>
@@ -57,19 +30,23 @@
                     onClick="fileUpload(this.form,'/messenger/upload','upload'); return false;">
                 <div id="upload"></div>
             </form>
-        </div>
+        </div> -->
 
         <div class="head-box py-3">
-            <input class="input" autocomplete="off" id="search" type="text" placeholder="Tìm kiếm file..">
+            <input class="input" autocomplete="off" id="search" type="text" placeholder="Tìm kiếm trong tệp của bạn..">
         </div>
         <div class="body-box">
-
+            <div class="d-flex justify-content-between mb-3">
+                <p class="m-0 p-0">Thêm tệp mới</p>
+                <a class="btn btn-sm text-white associate_label btn-add" name="NAME" path="PATH">Chọn</a>
+            </div>
             <div id="files">
                 <div class="files d-flex justify-content-between mb-3">
                     <p class="m-0 p-0">NAME</p>
                     <a class="btn btn-sm text-white associate_label btn-save" name="NAME" path="PATH">Đính kèm</a>
                 </div>
             </div>
+
         </div>
 
         <div class="head-box py-3">
@@ -84,11 +61,21 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <footer class="fixed-bottom">
-        chafo
+    <footer class="fixed-bottom container">
+        <div class="black-box text-white d-flex justify-content-center">
+            <div class="btn-0 mx-3">
+                Soạn thư
+            </div>
+            <div class="btn-0 mx-3">
+                Đã gửi
+            </div>
+            <div class="btn-0 mx-3">
+                Tệp
+            </div>
+        </div>
     </footer>
+
     <script src="/assets/js/broadcast.js"></script>
 </body>
 

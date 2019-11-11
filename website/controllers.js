@@ -12,7 +12,7 @@ module.exports = function (app) {
         function (req, res) {
             res.render("pages/signup", { message: req.flash('signup') })
         })
-    app.get('/messenger/broadcast', function (req, res) {
+    app.get('/messenger/broadcast', loggedIn, function (req, res) {
         res.render("pages/broadcast", { user: { email: 'dut' } })
     })
     app.post('/messenger/upload', function (req, res) {
