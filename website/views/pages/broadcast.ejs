@@ -8,21 +8,16 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="/assets/css/main.css" rel="stylesheet">
     <link href="/assets/css/broadcast.css" rel="stylesheet">
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
 
     <div class="container">
 
-        <div class="profile-box">
-            <form>
-                <input type="file" name="datafile" /></br>
-                <input name="psid" value="343242343" style="display: none;">
-                <input type="button" value="upload"
-                    onClick="fileUpload(this.form,'/messenger/upload','upload'); return false;">
-                <div id="upload"></div>
-            </form>
-        </div>
+
         <div class="profile-box">
             <div class="row no-gutters">
                 <div class="col-2">
@@ -53,16 +48,26 @@
             <textarea placeholder="Nhập nội dung..."></textarea>
         </div>
 
+        <div class="box">
+            <form>
+                <input type="file" name="datafile" /></br>
+                <input name="psid" value="343242343" style="display: none;">
+
+                <input class="btn btn-remove" type="button" value="Tải tệp lên"
+                    onClick="fileUpload(this.form,'/messenger/upload','upload'); return false;">
+                <div id="upload"></div>
+            </form>
+        </div>
 
         <div class="head-box py-3">
             <input class="input" autocomplete="off" id="search" type="text" placeholder="Tìm kiếm file..">
         </div>
         <div class="body-box">
 
-            <div id="get_all_labels">
-                <div class="get_all_labels d-flex justify-content-between">
-                    <p class="m-0 p-0">đang tải file...</p>
-                    <a class="btn btn-sm text-white associate_label btn-save" name="NAME" id="ID">Đính kèm</a>
+            <div id="files">
+                <div class="files d-flex justify-content-between mb-3">
+                    <p class="m-0 p-0">NAME</p>
+                    <a class="btn btn-sm text-white associate_label btn-save" name="NAME" path="PATH">Đính kèm</a>
                 </div>
             </div>
         </div>
@@ -73,16 +78,17 @@
         <div class="body-box">
 
             <div id="get_all_labels">
-                <div class="get_all_labels d-flex justify-content-between">
+                <div class="get_all_labels d-flex justify-content-between mb-3">
                     <p class="m-0 p-0">NAME</p>
-                    <a class="btn btn-sm text-white associate_label btn-save" name="NAME" id="ID">Chọn gửi</a>
+                    <a class="btn btn-sm text-white associate_label btn-save" name="NAME" id="ID">Gửi</a>
                 </div>
             </div>
         </div>
 
     </div>
-
-    <script src="/assets/js/jquery.min.js"></script>
+    <footer class="fixed-bottom">
+        chafo
+    </footer>
     <script src="/assets/js/broadcast.js"></script>
 </body>
 

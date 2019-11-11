@@ -23,6 +23,29 @@ var data = {
         }
     ]
 }
+var element = {
+    files: {
+        box: document.getElementById('files'),
+        items: document.getElementsByClassName('files')[0].outerHTML
+    },
+    get_all_labels: {
+        box: document.getElementById('get_all_labels'),
+        items: document.getElementsByClassName('get_all_labels')[0].outerHTML
+    }
+}
+function contentUpdate() {
+    var html = '';
+    data.files.forEach(file => {
+        html += element.files.items.replace(/NAME/g, file.name).replace(/PATH/g, file.path);
+    })
+    element.files.box.innerHTML = html;
+    html = '';
+    data.get_all_labels.forEach(file => {
+        html += element.get_all_labels.items.replace(/NAME/g, file.name).replace(/ID/g, file.path);
+    })
+    element.get_all_labels.box.innerHTML = html;
+}
+contentUpdate();
 function fileUpload(form, action_url, div_id) {
     // Create the iframe...
     var iframe = document.createElement("iframe");
