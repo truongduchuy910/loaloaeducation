@@ -16,9 +16,9 @@ module.exports = {
     },
     senderRecognition: function (psid) {
 
-        db.sender.find({ psid: psid }, (err, users) => {
-            if (users.length == 0) {
-                console.log('new user');
+        db.sender.findOne({ psid: psid }, (err, user) => {
+            console.log(user)
+            if (!user) {
                 identity.profile(psid, (err, profile) => {
                     db.sender.insertMany({
                         psid: psid,
@@ -26,10 +26,26 @@ module.exports = {
                         last_name: profile.last_name,
                         profile_pic: profile.profile_pic
                     }, (err, newUser) => {
-                        console.log('inserMany: ', newUser)
+                        profile();
+                        console.log('Insert user: ', newUser)
                     })
                 })
 
+            } else if (!user.first_name) {
+                identity.profile(psid, (err, profile) => {
+                    db.sender.findOneAndUpdate(
+                        {
+                            psid: psid
+                        },
+                        {
+                            first_name: profile.first_name,
+                            last_name: profile.last_name,
+                            profile_pic: profile.profile_pic
+                        }, (err, newUser) => {
+                            profile();
+                            console.log('Update user: ', newUser)
+                        })
+                })
             }
         })
 
