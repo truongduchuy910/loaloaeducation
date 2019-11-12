@@ -2,6 +2,7 @@ var ms = require('../messenger/models').public;
 module.exports = {
     broadcast: function (labels, user, text, files) {
         var views;
+        console.log(files);
         if (files.path) {
             views = [ms.views.attachment(text, files.path.slice(14))]
         } else {
