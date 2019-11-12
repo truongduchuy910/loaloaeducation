@@ -1,5 +1,5 @@
 var labels = require('./api/labels');
-var profile = require('./api/profile');
+var profileApi = require('./api/profile');
 //profile();
 var identity = require('./api/identity');
 var broadcast = require('./api/broadcast');
@@ -26,7 +26,7 @@ module.exports = {
                         last_name: profile.last_name,
                         profile_pic: profile.profile_pic
                     }, (err, newUser) => {
-                        profile();
+                        profileApi();
                         console.log('Insert user: ', newUser)
                     })
                 })
@@ -42,7 +42,7 @@ module.exports = {
                             last_name: profile.last_name,
                             profile_pic: profile.profile_pic
                         }, (err, newUser) => {
-                            profile();
+                            profileApi();
                             console.log('Update user: ', newUser)
                         })
                 })
