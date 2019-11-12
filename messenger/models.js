@@ -17,7 +17,7 @@ module.exports = {
     senderRecognition: function (psid) {
 
         db.sender.findOne({ psid: psid }, (err, user) => {
-            console.log(user)
+            console.log('find user: ', user)
             if (!user) {
                 identity.profile(psid, (err, profile) => {
                     db.sender.insertMany({
