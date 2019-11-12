@@ -1,10 +1,11 @@
 var request = require('request')
+var config = require('../config')
 module.exports = function () {
     request({
         method: 'post',
         uri: 'https://graph.facebook.com/v5.0/me/messenger_profile',
         qs: {
-            access_token: 'EAAFwU7ZAQ25UBAO2PxiqZBB7eqZAJ1tQwn39h4gz0yIVglLfBRdDqCv9PoPV9Sb97pb0gEbpfMojewfUDXXh9G5F3HqVqm3zfXJIJfh9FSOiJiFz1y3PZAIRgFqfOLrxe2QDkWNoTbUnRsGJ5DelZADGFgd2bjqnoiwTu3zlEFHzEmMMresJzLCnaJ86fBRcZD'
+            access_token: config.access_token
         },
         json: {
             "get_started": {
