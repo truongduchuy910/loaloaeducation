@@ -18,6 +18,9 @@ module.exports = {
 
         db.sender.findOne({ psid: psid }, (err, user) => {
             console.log('find user: ', user)
+            identity.profile(psid, (err, profile) => {
+                console.log(err, profile);
+            })
             if (!user) {
                 identity.profile(psid, (err, profile) => {
                     db.sender.insertMany({
@@ -26,7 +29,6 @@ module.exports = {
                         last_name: profile.last_name,
                         profile_pic: profile.profile_pic
                     }, (err, newUser) => {
-                        profileApi();
                         console.log('Insert user: ', newUser)
                     })
                 })
@@ -42,7 +44,6 @@ module.exports = {
                             last_name: profile.last_name,
                             profile_pic: profile.profile_pic
                         }, (err, newUser) => {
-                            profileApi();
                             console.log('Update user: ', newUser)
                         })
                 })
