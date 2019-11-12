@@ -5,7 +5,7 @@ module.exports = {
     create_label: function (psid, label, callback) {
         request(
             {
-                uri: "https://graph.facebook.com/v2.11/me/custom_labels",
+                uri: "https://graph.facebook.com/v5.0/me/custom_labels",
                 qs: {
                     access_token: config.access_token
                 },
@@ -22,7 +22,7 @@ module.exports = {
     },
     associate_label: function (psid, id, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/" + id + "/label",
+            uri: "https://graph.facebook.com/v5.0/" + id + "/label",
             qs: { access_token: config.access_token },
             method: "POST",
             json: {
@@ -36,7 +36,7 @@ module.exports = {
     },
     remove_label: function (psid, id, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/" + id + "/label",
+            uri: "https://graph.facebook.com/v5.0/" + id + "/label",
             qs: { access_token: config.access_token },
             method: "DELETE",
             json: {
@@ -48,7 +48,7 @@ module.exports = {
     },
     retrieving_labels_by_psid: function (psid, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/" + psid + "/custom_labels",
+            uri: "https://graph.facebook.com/v5.0/" + psid + "/custom_labels",
             qs: {
                 fields: "name",
                 access_token: config.access_token
@@ -61,7 +61,7 @@ module.exports = {
     },
     get_all_labels: function (callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/me/custom_labels",
+            uri: "https://graph.facebook.com/v5.0/me/custom_labels",
             qs: {
                 fields: "name",
                 access_token: config.access_token
@@ -74,7 +74,7 @@ module.exports = {
     },
     get_label_details: function (custom_label_id, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/" + custom_label_id,
+            uri: "https://graph.facebook.com/v5.0/" + custom_label_id,
             qs: {
                 fields: "name",
                 access_token: config.access_token
@@ -88,7 +88,7 @@ module.exports = {
     ,
     delete_label: function (custom_label_id, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/" + custom_label_id,
+            uri: "https://graph.facebook.com/v5.0/" + custom_label_id,
             qs: {
                 access_token: config.access_token
             },

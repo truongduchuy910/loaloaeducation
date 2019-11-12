@@ -5,7 +5,7 @@ var config = require('../config')
 module.exports = {
     creating_broadcast_messages: function (messages, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/me/message_creatives",
+            uri: "https://graph.facebook.com/v5.0/me/message_creatives",
             qs: { access_token: config.access_token },
             method: "POST",
             json: {
@@ -19,7 +19,7 @@ module.exports = {
     },
     sending_broadcast_messages_with_labe: function (message_creative_id, custom_label_id, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/me/broadcast_messages",
+            uri: "https://graph.facebook.com/v5.0/me/broadcast_messages",
             qs: { access_token: config.access_token },
             method: "POST",
             json: {
@@ -35,7 +35,7 @@ module.exports = {
     },
     sending_broadcast_messages: function (message_creative_id, callback) {
         request({
-            uri: "https://graph.facebook.com/v2.11/me/broadcast_messages",
+            uri: "https://graph.facebook.com/v5.0/me/broadcast_messages",
             qs: { access_token: config.access_token },
             method: "POST",
             json: {
