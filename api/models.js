@@ -15,7 +15,7 @@ module.exports = {
 
         }
         if (url) {
-            attachment = views.attachment(url)
+            attachment = views.attachment(`https://edu.loaloa.me${url}`)
             let { message_creative_id } = await broadcast.creating_broadcast_messages([attachment]);
             attachment_creative_id = message_creative_id;
             if (labels.length > 1) {
