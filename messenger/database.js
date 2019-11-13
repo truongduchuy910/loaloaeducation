@@ -8,7 +8,12 @@ module.exports = {
     })),
     broadcast: mongoose.model('broadcast', mongoose.Schema({
         user: String,
-        broadcast_id: String,
-        message_creative_id: String
+        content: String,
+        attachment: String,
+        content_creative_id: String,
+        attachment_creative_id: String,
+        content_id: String,
+        attachment_id: String,
+        labels: Array
     }))
 }

@@ -2,10 +2,10 @@
 var request = require('request')
 var config = require('../config')
 module.exports = {
-    create_label: function (psid, label, callback) {
+    create_label: function (label, callback) {
         request(
             {
-                uri: "https://graph.facebook.com/v5.0/me/custom_labels",
+                uri: "https://graph.facebook.com/v3.3/me/custom_labels",
                 qs: {
                     access_token: config.access_token
                 },
@@ -22,7 +22,7 @@ module.exports = {
     },
     associate_label: function (psid, id, callback) {
         request({
-            uri: "https://graph.facebook.com/v5.0/" + id + "/label",
+            uri: "https://graph.facebook.com/v3.3/" + id + "/label",
             qs: { access_token: config.access_token },
             method: "POST",
             json: {
@@ -36,7 +36,7 @@ module.exports = {
     },
     remove_label: function (psid, id, callback) {
         request({
-            uri: "https://graph.facebook.com/v5.0/" + id + "/label",
+            uri: "https://graph.facebook.com/v3.3/" + id + "/label",
             qs: { access_token: config.access_token },
             method: "DELETE",
             json: {
@@ -48,53 +48,53 @@ module.exports = {
     },
     retrieving_labels_by_psid: function (psid, callback) {
         request({
-            uri: "https://graph.facebook.com/v5.0/" + psid + "/custom_labels",
+            uri: "https://graph.facebook.com/v3.3/" + psid + "/custom_labels",
             qs: {
                 fields: "name",
                 access_token: config.access_token
             },
             method: "GET",
         }, (err, res, body) => {
-            console.log('retrieving_labels_by_psid', err, body.data)
+            console.log('retrieving_labels_by_psid', err, body)
             callback(err, JSON.parse(body))
         });
     },
     get_all_labels: function (callback) {
         request({
-            uri: "https://graph.facebook.com/v5.0/me/custom_labels",
+            uri: "https://graph.facebook.com/v3.3/me/custom_labels",
             qs: {
                 fields: "name",
                 access_token: config.access_token
             },
             method: "GET",
         }, (err, res, body) => {
-            console.log('get_all_labels', err, body.data)
+            console.log('get_all_labels', err, body)
             callback(err, JSON.parse(body))
         });
     },
     get_label_details: function (custom_label_id, callback) {
         request({
-            uri: "https://graph.facebook.com/v5.0/" + custom_label_id,
+            uri: "https://graph.facebook.com/v3.3/" + custom_label_id,
             qs: {
                 fields: "name",
                 access_token: config.access_token
             },
             method: "GET",
         }, (err, res, body) => {
-            console.log('get_label_details', err, body.data)
+            console.log('get_label_details', err, body)
             callback(err, body)
         });
     }
     ,
     delete_label: function (custom_label_id, callback) {
         request({
-            uri: "https://graph.facebook.com/v5.0/" + custom_label_id,
+            uri: "https://graph.facebook.com/v3.3/" + custom_label_id,
             qs: {
                 access_token: config.access_token
             },
             method: "DELETE"
         }, (err, res, body) => {
-            console.log('delete_label', err, body.data)
+            console.log('delete_label', err, body)
             callback(err, body)
         });
     }

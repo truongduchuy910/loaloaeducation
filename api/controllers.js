@@ -34,6 +34,11 @@ module.exports = function (app) {
                 res.send(null);
             }
         })
+        .get('/api/get_all_notification', (req, res) => {
+            ms.db.broadcast.find({ user: req.query.user }, (err, docs) => {
+                res.send(docs)
+            })
+        })
         .post('/api/associate_label', (req, res) => {
             console.log(req.body);
             var { psid, id, name } = req.body;
@@ -77,10 +82,50 @@ module.exports = function (app) {
 
             form.parse(req, function (err, fields, files) {
                 if (err) throw err;
-                models.broadcast(fields.labels.split(","), fields.user, fields.text, files)
+                var url = null;
+                if (files.upload.name) {
+                    url = files.upload.path.slice(14);
+                }
+                models.broadcast(fields.labels.split(","), fields.user, fields.text, url)
                 res.redirect('/messenger/broadcast')
             });
 
         })
-
+        //NHÓM API CẦN XÁC THỰC ACCESS TOKEN
+        .post('/api/create_label', function (req, res) {
+            if (req.query && req.query.access_token == 'EAACubcIenBMBAPowfDB26LzYTWsrQyLnqxzAZCSdXyX0cI5dKxoaZBL5Wx7Rsv4nwafpbEgwMnlXmXx38VJgyBIOSIWZAYWCCvYrnAsNYJ4k9UakM62RSPVzqfNkEr9hzLm1kr') {
+                console.log(req.body.name);
+                res.send({
+                    docs: {
+                        success: true,
+                    },
+                    err: null
+                });
+            } else {
+                res.send({
+                    docs: {
+                        success: false,
+                    },
+                    err: 'access_token is wrong!'
+                });
+            }
+        })
+        .post('/api/delete_label', function (req, res) {
+            if (req.query && req.query.access_token == 'EAACubcIenBMBAPowfDB26LzYTWsrQyLnqxzAZCSdXyX0cI5dKxoaZBL5Wx7Rsv4nwafpbEgwMnlXmXx38VJgyBIOSIWZAYWCCvYrnAsNYJ4k9UakM62RSPVzqfNkEr9hzLm1kr') {
+                console.log(req.body.id);
+                res.send({
+                    docs: {
+                        success: true,
+                    },
+                    err: null
+                });
+            } else {
+                res.send({
+                    docs: {
+                        success: false,
+                    },
+                    err: 'access_token is wrong!'
+                });
+            }
+        })
 }

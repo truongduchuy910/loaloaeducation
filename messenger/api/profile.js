@@ -3,7 +3,7 @@ var config = require('../config')
 module.exports = function () {
     request({
         method: 'post',
-        uri: 'https://graph.facebook.com/v5.0/me/messenger_profile',
+        uri: 'https://graph.facebook.com/v3.3/me/messenger_profile',
         qs: {
             access_token: config.access_token
         },

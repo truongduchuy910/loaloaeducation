@@ -12,7 +12,7 @@ module.exports = {
                 fields: ["first_name", "last_name", "profile_pic"]
             }
         }, (err, res, body) => {
-            console.log('profile', err, body.data)
+            console.log('profile', err, body)
             callback(err, body);
         })
     }

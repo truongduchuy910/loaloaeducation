@@ -16,6 +16,9 @@ module.exports = function (app) {
     app.get('/messenger/broadcast', loggedIn, function (req, res) {
         res.render("pages/broadcast", { user: req.user })
     })
+    app.get('/admin', loggedIn, function (req, res) {
+        res.render("admin/dashboard", { user: req.user })
+    })
     app.post('/messenger/upload', function (req, res) {
         var form = new formidable.IncomingForm();
         form.uploadDir = "./website/public/upload";

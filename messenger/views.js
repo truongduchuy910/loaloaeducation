@@ -28,9 +28,8 @@ module.exports = {
             text: text,
         }
     },
-    attachment: function (text, url) {
+    attachment: function (url) {
         return {
-            text: text,
             attachment: {
                 type: "file",
                 payload: {

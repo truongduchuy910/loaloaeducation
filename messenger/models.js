@@ -18,9 +18,6 @@ module.exports = {
 
         db.sender.findOne({ psid: psid }, (err, user) => {
             console.log('find user: ', user)
-            identity.profile(psid, (err, profile) => {
-                console.log(err, profile);
-            })
             if (!user) {
                 identity.profile(psid, (err, profile) => {
                     db.sender.insertMany({

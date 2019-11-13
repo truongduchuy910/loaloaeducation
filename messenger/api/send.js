@@ -6,7 +6,7 @@ module.exports = {
     message: function (psid, message) {
         request(
             {
-                uri: "https://graph.facebook.com/v5.0/me/messages",
+                uri: "https://graph.facebook.com/v3.3/me/messages",
                 qs: {
                     access_token: config.access_token
                 },
