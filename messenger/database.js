@@ -8,8 +8,8 @@ module.exports = {
     })),
     broadcast: mongoose.model('broadcast', mongoose.Schema({
         user: String,
-        content: String,
-        attachment: String,
+        content: Object,
+        attachment: Object,
         content_creative_id: String,
         attachment_creative_id: String,
         content_id: String,
