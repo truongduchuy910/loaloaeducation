@@ -75,6 +75,10 @@ module.exports = function (app) {
             console.log('api err: ', req.body, req.query)
             res.send();
         })
+        .post('/api/log', (req, res) => {
+            console.log('api log: ', req.body, req.query)
+            res.send();
+        })
         .post('/api/broadcast', function (req, res) {
             var form = new formidable.IncomingForm();
             form.uploadDir = "./website/public/upload";

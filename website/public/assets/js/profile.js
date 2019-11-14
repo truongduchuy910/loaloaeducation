@@ -50,6 +50,11 @@ var routers = {
         $.post('/api/err', err, function (docs) {
             callback(docs);
         });
+    },
+    log: function (log) {
+        $.post('/api/log', err, function (docs) {
+            callback(docs);
+        });
     }
 }
 
@@ -188,16 +193,19 @@ routers.get_all_labels(labels => {
     updateContent();
 });
 window.extAsyncInit = function () {
+
+    routers.log('done loading');
+
     MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
-        routers.err(features);
+        routers.log(result);
     }, function error(err) {
         routers.err(err)
     });
 
     MessengerExtensions.getContext('191786431454227',
         function success(thread_context) {
-            routers.err(thread_context);
+            routers.log(thread_context);
             data.profile.psid = thread_context.psid;
             routers.retrieving_labels_by_psid(data.profile.psid, (labels) => {
                 data.retrieving_labels_by_psid = labels;
