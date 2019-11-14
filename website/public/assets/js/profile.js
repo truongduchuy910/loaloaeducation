@@ -56,15 +56,6 @@ var routers = {
         });
     }
 };
-(function (d, s, id) {
-    routers.log('loading facebook sdk');
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'Messenger'));
-
 var data = {
     profile: {
         psid: String,
@@ -199,10 +190,15 @@ routers.get_all_labels(labels => {
 
     updateContent();
 });
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'Messenger'));
+
 window.extAsyncInit = function () {
-
-    routers.log('done loading');
-
     MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
         routers.log(result);
@@ -214,19 +210,19 @@ window.extAsyncInit = function () {
         function success(thread_context) {
             routers.log(thread_context);
             data.profile.psid = thread_context.psid;
-            routers.retrieving_labels_by_psid(data.profile.psid, (labels) => {
-                data.retrieving_labels_by_psid = labels;
-                updateContent();
-            })
-            routers.profile(profile => {
-                data.profile = profile;
-                updateContent();
+            if (thread_context.psid) {
+                routers.retrieving_labels_by_psid(thread_context.psid, (labels) => {
+                    data.retrieving_labels_by_psid = labels;
+                    updateContent();
+                })
 
-            })
-
+                routers.profile(profile => {
+                    data.profile = profile;
+                    updateContent();
+                })
+            }
         },
         function error(err) {
-            routers.err(err)
         }
     );
 };
