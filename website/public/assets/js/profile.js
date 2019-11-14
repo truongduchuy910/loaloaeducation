@@ -51,7 +51,7 @@ var routers = {
         });
     },
     log: function (log) {
-        $.post('/api/log', err, function (docs) {
+        $.post('/api/log', log, function (docs) {
             callback(docs);
         });
     }
