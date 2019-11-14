@@ -187,39 +187,42 @@ routers.get_all_labels(labels => {
 
     updateContent();
 });
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'Messenger'));
+window.onload = function () {
 
-window.extAsyncInit = function () {
-    MessengerExtensions.getSupportedFeatures(function success(result) {
-        let features = result.supported_features;
-        routers.err(features);
-    }, function error(err) {
-        routers.err(err)
-    });
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'Messenger'));
 
-    MessengerExtensions.getContext('191786431454227',
-        function success(thread_context) {
-            routers.err(thread_context);
-            data.profile.psid = thread_context.psid;
-            routers.retrieving_labels_by_psid(data.profile.psid, (labels) => {
-                data.retrieving_labels_by_psid = labels;
-                updateContent();
-            })
-            routers.profile(profile => {
-                data.profile = profile;
-                updateContent();
-
-            })
-
-        },
-        function error(err) {
+    window.extAsyncInit = function () {
+        MessengerExtensions.getSupportedFeatures(function success(result) {
+            let features = result.supported_features;
+            routers.err(features);
+        }, function error(err) {
             routers.err(err)
-        }
-    );
-};
+        });
+
+        MessengerExtensions.getContext('191786431454227',
+            function success(thread_context) {
+                routers.err(thread_context);
+                data.profile.psid = thread_context.psid;
+                routers.retrieving_labels_by_psid(data.profile.psid, (labels) => {
+                    data.retrieving_labels_by_psid = labels;
+                    updateContent();
+                })
+                routers.profile(profile => {
+                    data.profile = profile;
+                    updateContent();
+
+                })
+
+            },
+            function error(err) {
+                routers.err(err)
+            }
+        );
+    };
+}
