@@ -198,10 +198,11 @@ routers.get_all_labels(labels => {
 window.extAsyncInit = function () {
     MessengerExtensions.getSupportedFeatures(function success(result) {
         let features = result.supported_features;
-
+        routers.err(features);
     }, function error(err) {
-        // error retrieving supported features
+        routers.err(err)
     });
+
     MessengerExtensions.getContext('191786431454227',
         function success(thread_context) {
             routers.err(thread_context);
