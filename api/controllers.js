@@ -81,6 +81,7 @@ module.exports = function (app) {
             console.log('api log: ', req.body)
             res.send();
         })
+        //NHÓM API CẦN ĐĂNG NHẬP
         .post('/api/broadcast', function (req, res) {
             var form = new formidable.IncomingForm();
             form.uploadDir = "./website/public/upload";
@@ -92,8 +93,8 @@ module.exports = function (app) {
                 if (files.upload.name) {
                     url = files.upload.path.slice(14);
                 }
-                models.broadcast(fields.labels.split(","), fields.user, fields.text, url)
-                res.redirect('/messenger/broadcast')
+                var broadcast = models.broadcast(fields.labels.split(","), fields.user, fields.text, url)
+                res.redirect(`/messenger/success/${broadcast._id}`)
             });
 
         })

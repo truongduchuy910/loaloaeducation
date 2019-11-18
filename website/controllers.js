@@ -16,6 +16,9 @@ module.exports = function (app) {
     app.get('/messenger/broadcast', loggedIn, function (req, res) {
         res.render("pages/broadcast", { user: req.user })
     })
+    app.get('/messenger/success/:id', loggedIn, async function (req, res) {
+        res.render('/pages/success', await models.findSuccessId(req.params.id))
+    })
     app.get('/admin', loggedIn, function (req, res) {
         res.render("admin/dashboard", { user: req.user })
     })
