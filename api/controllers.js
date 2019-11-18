@@ -76,11 +76,7 @@ module.exports = function (app) {
             res.send();
         })
         .post('/api/log', (req, res) => {
-            console.log();
-            console.log();
-            console.log();
-            console.log();
-            console.log();
+            console.log('\n.\n.\n.\n.\n.\n.\n.');
             console.log('============================')
             console.log('api log: ', req.body)
             res.send();
