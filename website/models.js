@@ -3,6 +3,7 @@ module.exports = {
     findSuccessId: (id) => {
         return new Promise(async (res, rej) => {
             db.broadcast.findById(id, (err, docs) => {
+                console.log(docs)
                 res(docs)
             })
         })
