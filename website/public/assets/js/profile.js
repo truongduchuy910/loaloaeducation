@@ -199,13 +199,6 @@ routers.get_all_labels(labels => {
 }(document, 'script', 'Messenger'));
 
 window.extAsyncInit = function () {
-    MessengerExtensions.getSupportedFeatures(function success(result) {
-        let features = result.supported_features;
-        routers.log(result);
-    }, function error(err) {
-        routers.err(err)
-    });
-
     MessengerExtensions.getContext('191786431454227',
         function success(thread_context) {
             routers.log(thread_context);

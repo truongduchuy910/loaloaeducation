@@ -7,10 +7,13 @@ module.exports = {
             content = views.text(`Thẻ ${user} gửi: ${text}`);
             let { message_creative_id } = await broadcast.creating_broadcast_messages([content]);
             content_creative_id = message_creative_id;
+            var content;
             if (labels.length > 1) {
-                var { content_id } = await broadcast.sending_broadcast_messages_with_labe_predicates(content_creative_id, labels);
+                let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe_predicates(content_creative_id, labels);
+                content = broadcast_id;
             } else {
-                var { content_id } = await broadcast.sending_broadcast_messages_with_labe(content_creative_id, labels[0]);
+                let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe(content_creative_id, labels[0]);
+                content = broadcast_id;
             }
 
         }
@@ -18,11 +21,13 @@ module.exports = {
             attachment = views.attachment(`https://edu.loaloa.me${url}`)
             let { message_creative_id } = await broadcast.creating_broadcast_messages([attachment]);
             attachment_creative_id = message_creative_id;
+            var attachment_id;
             if (labels.length > 1) {
-                var { attachment_id } = await broadcast.sending_broadcast_messages_with_labe_predicates(attachment_creative_id, labels);
+                let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe_predicates(attachment_creative_id, labels);
+                attachment_id = broadcast_id;
             } else {
-                var { attachment_id } = await broadcast.sending_broadcast_messages_with_labe(attachment_creative_id, labels[0]);
-
+                let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe(attachment_creative_id, labels[0]);
+                attachment_id = broadcast_id;
             }
         }
 

@@ -17,23 +17,20 @@ module.exports = {
             titles.forEach(title => {
                 database.find({
                     title: title
-                }, (err, docs) => {
+                }, async (err, docs) => {
                     if (docs.length == 0) {
-                        ms.broadcast.creating_broadcast_messages(
-                            [ms.views.dut(title)],
-                            (err, message) => {
-                                ms.broadcast.sending_broadcast_messages(
-                                    message.message_creative_id, (err, broadcast) => {
-                                        ms.db.broadcast.insertMany({
-                                            user: 'dut',
-                                            broadcast_id: broadcast.broadcast_id,
-                                            message_creative_id: message.message_creative_id
-                                        })
-                                    })
-                            }
+                        var { message_creative_id } = await ms.broadcast.creating_broadcast_messages(
+                            [ms.views.dut(title)]
                         )
-                        database.insertMany({ title: title }, (err, docs) => {
-                        })
+                        var { broadcast_id } = await ms.broadcast.sending_broadcast_messages(
+                            message_creative_id
+                        )
+                        database.insertMany(
+                            {
+                                title: title,
+                                broadcast_id: broadcast_id
+                            }, (err, docs) => {
+                            })
                     }
                 })
             });

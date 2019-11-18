@@ -72,11 +72,11 @@ module.exports = function (app) {
             }
         })
         .post('/api/err', (req, res) => {
-            console.log('api err: ', req.body, req.query)
+            console.log('api err: ', req.body)
             res.send();
         })
         .post('/api/log', (req, res) => {
-            console.log('api log: ', req.body, req.query)
+            console.log('api log: ', req.body)
             res.send();
         })
         .post('/api/broadcast', function (req, res) {
