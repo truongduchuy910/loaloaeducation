@@ -18,11 +18,10 @@ module.exports = function (app) {
     })
     app.get('/messenger/manage', async (req, res) => {
         var docs = await models.findAllSuccess();
-        res.render("pages/manage", { docs: docs })
+        res.render('pages/manage', { docs: docs })
     })
     app.get('/messenger/success/:id', async (req, res) => {
-        var docs = await models.findSuccessId(req.params.id);
-        res.render('/pages/success', { docs: docs })
+        res.render('pages/success')
     })
     app.get('/admin', loggedIn, function (req, res) {
         res.render("admin/dashboard", { user: req.user })
