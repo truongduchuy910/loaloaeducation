@@ -16,8 +16,13 @@ module.exports = function (app) {
     app.get('/messenger/broadcast', loggedIn, function (req, res) {
         res.render("pages/broadcast", { user: req.user })
     })
-    app.get('/messenger/success/:id', loggedIn, async (req, res) => {
-        res.render('/pages/success', { docs: await models.findSuccessId(req.params.id) })
+    app.get('/messenger/manage', async (req, res) => {
+        var docs = await models.findAllSuccess();
+        res.render("pages/manage", { docs: docs })
+    })
+    app.get('/messenger/success/:id', async (req, res) => {
+        var docs = await models.findSuccessId(req.params.id);
+        res.render('/pages/success', { docs: docs })
     })
     app.get('/admin', loggedIn, function (req, res) {
         res.render("admin/dashboard", { user: req.user })
