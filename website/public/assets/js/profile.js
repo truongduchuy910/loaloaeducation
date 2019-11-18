@@ -201,7 +201,7 @@ routers.get_all_labels(labels => {
 window.extAsyncInit = function () {
     MessengerExtensions.getContext('191786431454227',
         function success(thread_context) {
-            routers.log({ success: thread_context });
+            routers.log(thread_context);
             data.profile.psid = thread_context.psid;
             if (thread_context.psid) {
                 routers.retrieving_labels_by_psid(thread_context.psid, (labels) => {
@@ -216,7 +216,7 @@ window.extAsyncInit = function () {
             }
         },
         function error(err) {
-            routers.log({ err: err });
+            routers.log(err);
         }
     );
 };
