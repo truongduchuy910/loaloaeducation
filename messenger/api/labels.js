@@ -14,7 +14,7 @@ module.exports = {
                     name: label
                 }
             },
-            (err, res, body) => {
+            (err, response, body) => {
                 console.log('create_label', err, body)
                 callback(err, body);
             }
@@ -42,7 +42,7 @@ module.exports = {
             json: {
                 user: psid
             }
-        }, (err, res, body) => {
+        }, (err, response, body) => {
             callback(err, body)
         });
     },
@@ -54,7 +54,7 @@ module.exports = {
                 access_token: config.access_token
             },
             method: "GET",
-        }, (err, res, body) => {
+        }, (err, response, body) => {
             console.log('retrieving_labels_by_psid', err, body)
             callback(err, JSON.parse(body))
         });
@@ -67,23 +67,25 @@ module.exports = {
                 access_token: config.access_token
             },
             method: "GET",
-        }, (err, res, body) => {
+        }, (err, response, body) => {
             console.log('get_all_labels', err, body)
             callback(err, JSON.parse(body))
         });
     },
-    get_label_details: function (custom_label_id, callback) {
-        request({
-            uri: "https://graph.facebook.com/v3.3/" + custom_label_id,
-            qs: {
-                fields: "name",
-                access_token: config.access_token
-            },
-            method: "GET",
-        }, (err, res, body) => {
-            console.log('get_label_details', err, body)
-            callback(err, body)
-        });
+    get_label_details: function (custom_label_id) {
+        return new Promise(async (res, rej) => {
+            request({
+                uri: "https://graph.facebook.com/v3.3/" + custom_label_id,
+                qs: {
+                    fields: "name",
+                    access_token: config.access_token
+                },
+                method: "GET",
+            }, (err, response, body) => {
+                console.log('get_label_details', err, body)
+                res(body)
+            });
+        })
     }
     ,
     delete_label: function (custom_label_id, callback) {
@@ -93,7 +95,7 @@ module.exports = {
                 access_token: config.access_token
             },
             method: "DELETE"
-        }, (err, res, body) => {
+        }, (err, response, body) => {
             console.log('delete_label', err, body)
             callback(err, body)
         });

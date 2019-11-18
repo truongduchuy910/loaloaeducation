@@ -7,6 +7,7 @@ module.exports = {
         profile_pic: String
     })),
     broadcast: mongoose.model('broadcast', mongoose.Schema({
+        time: Date,
         user: String,
         content: Object,
         attachment: Object,
