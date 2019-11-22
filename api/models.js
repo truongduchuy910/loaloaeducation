@@ -1,7 +1,16 @@
 var { broadcast, views, db, labels } = require('../messenger/models').public;
 module.exports = {
+    get_all_broadcast: (user) => {
+        return new Promise(async (resolve, reject) => {
+            db.broadcast.find({
+                user: user
+            }, (err, docs) => {
+                resolve(docs);
+            })
+        })
+    },
     broadcast: async function (labels_id, user, text, url) {
-        return new Promise(async (reject, resolve) => {
+        return new Promise(async (resolve, reject) => {
             var content, content_creative_id, content_id,
                 attachment, attachment_creative_id, attachment_id;
             if (text) {
@@ -36,6 +45,7 @@ module.exports = {
             Promise.all(labelsName)
                 .then(result => {
                     db.broadcast.insertMany({
+                        time: new Date(),
                         user: user,
                         content: content,
                         attachment: attachment,

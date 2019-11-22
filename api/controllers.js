@@ -87,7 +87,7 @@ module.exports = function (app) {
             form.uploadDir = "./website/public/upload";
             form.keepExtensions = true;
 
-            form.parse(req, function (err, fields, files) {
+            form.parse(req, async function (err, fields, files) {
                 if (err) throw err;
                 var url = null;
                 if (files.upload.name) {
@@ -97,6 +97,12 @@ module.exports = function (app) {
                 res.redirect(`/messenger/success/${broadcast._id}`)
             });
 
+        })
+        .get('/api/get_all_broadcast', async (req, res) => {
+            if (req.user && req.user.local.email) {
+                var br = await models.get_all_broadcast(req.user.local.email);
+                res.send(br)
+            }
         })
         //NHÓM API CẦN XÁC THỰC ACCESS TOKEN
         .post('/api/create_label', function (req, res) {

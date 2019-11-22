@@ -15,16 +15,27 @@
 <body class="pb-5">
 
     <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Ngày</th>
+                    <th scope="col">Thẻ</th>
+                    <th scope="col">Nội dung</th>
+                </tr>
+            </thead>
+            <tbody id="manage-box">
+                <tr id="manage-item">
+                    <th scope="row">DATE</th>
+                    <td>LABEL</td>
+                    <td>CONTENT</td>
+                </tr>
 
-        <% docs.forEach(br => {%>
-        <div class="box">
-            <p><%=br._id%></p>
-        </div>
-        <%})%>
+            </tbody>
+        </table>
+
     </div>
     <% include ../partials/footer %>
-
-    <script src="/assets/js/broadcast.js"></script>
+    <script src="/assets/js/manage.js"></script>
 </body>
 
 </html>
