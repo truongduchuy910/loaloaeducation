@@ -42,7 +42,7 @@ function updateContent() {
 }
 updateContent();
 routers.get_all_broadcast(broadcasts => {
-    data = broadcasts;
+    data = broadcasts.reverse();
     console.log(data)
     updateContent();
 })
