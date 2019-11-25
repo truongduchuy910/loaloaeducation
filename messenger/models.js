@@ -1,11 +1,11 @@
-var labels = require('./api/labels');
-var profileApi = require('./api/profile');
-profileApi();
-var identity = require('./api/identity');
-var broadcast = require('./api/broadcast');
+var labels = require('./models/labels');
+var profileApi = require('./models/profile');
+//profileApi();
+var identity = require('./models/identity');
+var broadcast = require('./models/broadcast');
 var views = require('./views');
 var db = require('./database');
-var send = require('./api/send')
+var send = require('./models/send')
 module.exports = {
     public: {
         db: db,

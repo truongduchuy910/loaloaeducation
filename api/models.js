@@ -15,26 +15,26 @@ module.exports = {
                 attachment, attachment_creative_id, attachment_id;
             if (text) {
                 content = views.text(`Thẻ ${user} gửi: ${text}`).text;
-                let { message_creative_id } = await broadcast.creating_broadcast_messages([content]);
+                let { message_creative_id } = await broadcast.creating_broadcast([content]);
                 content_creative_id = message_creative_id;
                 if (labels_id.length > 1) {
-                    let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe_predicates(content_creative_id, labels_id);
+                    let { broadcast_id } = await broadcast.broadcast_with_labe_predicates(content_creative_id, labels_id);
                     content_id = broadcast_id;
                 } else {
-                    let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe(content_creative_id, labels_id[0]);
+                    let { broadcast_id } = await broadcast.broadcast_with_labe(content_creative_id, labels_id[0]);
                     content_id = broadcast_id;
                 }
 
             }
             if (url) {
                 attachment = views.attachment(`https://edu.loaloa.me${url}`)
-                let { message_creative_id } = await broadcast.creating_broadcast_messages([attachment]);
+                let { message_creative_id } = await broadcast.creating_broadcast([attachment]);
                 attachment_creative_id = message_creative_id;
                 if (labels_id.length > 1) {
-                    let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe_predicates(attachment_creative_id, labels_id);
+                    let { broadcast_id } = await broadcast.broadcast_with_labe_predicates(attachment_creative_id, labels_id);
                     attachment_id = broadcast_id;
                 } else {
-                    let { broadcast_id } = await broadcast.sending_broadcast_messages_with_labe(attachment_creative_id, labels_id[0]);
+                    let { broadcast_id } = await broadcast.broadcast_with_labe(attachment_creative_id, labels_id[0]);
                     attachment_id = broadcast_id;
                 }
             }

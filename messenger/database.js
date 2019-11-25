@@ -16,5 +16,20 @@ module.exports = {
         content_id: String,
         attachment_id: String,
         labels: Array
+    })),
+    indentity: mongoose.model('broadcast', mongoose.Schema({
+        time: Date,
+        first_name: String,
+        last_name: String,
+        profile_pic: String,
+        psid: String,
+    })),
+    labels: mongoose.model('broadcast', mongoose.Schema({
+        time: Date,
+        name: String,
+        id: String,
+        profile_pic: String,
+        psid: String,
+        labels: Array
     }))
 }
