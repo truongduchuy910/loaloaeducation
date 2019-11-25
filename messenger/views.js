@@ -4,7 +4,7 @@ module.exports = {
             text: `Chào mừng ${name} đến với Loa Loa Education. Rất cảm ơn bạn đã ủng hộ ứng dụng!`
         }
     },
-    dut: function (text) {
+    dut_G_Thongbao: function (text) {
         return {
             attachment: {
                 type: "template",
@@ -15,6 +15,25 @@ module.exports = {
                         {
                             type: "web_url",
                             url: "http://sv.dut.udn.vn/G_Thongbao.aspx",
+                            title: "Chi tiết",
+                            webview_height_ratio: "tall"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    dut_G_Thongbao_LopHP: function (text) {
+        return {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: text,
+                    buttons: [
+                        {
+                            type: "web_url",
+                            url: "http://sv.dut.udn.vn/G_Thongbao_LopHP.aspx",
                             title: "Chi tiết",
                             webview_height_ratio: "tall"
                         }
