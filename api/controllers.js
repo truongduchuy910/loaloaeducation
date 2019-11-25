@@ -94,7 +94,7 @@ module.exports = function (app) {
                     url = files.upload.path.slice(14);
                 }
                 var broadcast = models.broadcast(fields.labels.split(","), fields.user, fields.text, url)
-                res.redirect(`/messenger/success/${broadcast._id}`)
+                res.redirect(`/messenger/manage`)
             });
 
         })
