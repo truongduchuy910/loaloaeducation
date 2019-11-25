@@ -1,6 +1,7 @@
 var request = require('request')
 var config = require('../config')
 module.exports = function () {
+    console.log('profile')
     request({
         method: 'post',
         uri: 'https://graph.facebook.com/v3.3/me/messenger_profile',

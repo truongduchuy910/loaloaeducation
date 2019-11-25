@@ -1,6 +1,6 @@
 var labels = require('./api/labels');
 var profileApi = require('./api/profile');
-//profileApi();
+profileApi();
 var identity = require('./api/identity');
 var broadcast = require('./api/broadcast');
 var views = require('./views');

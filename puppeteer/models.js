@@ -21,12 +21,12 @@ module.exports = {
                     if (docs.length == 0) {
                         console.log(title);
 
-                        // var { message_creative_id } = await ms.broadcast.creating_broadcast_messages(
-                        //     [ms.views.dut_G_Thongbao(title)]
-                        // )
-                        // var { broadcast_id } = await ms.broadcast.sending_broadcast_messages(
-                        //     message_creative_id
-                        // )
+                        var { message_creative_id } = await ms.broadcast.creating_broadcast_messages(
+                            [ms.views.dut_G_Thongbao(title)]
+                        )
+                        var { broadcast_id } = await ms.broadcast.sending_broadcast_messages(
+                            message_creative_id
+                        )
 
                         database.insertMany(
                             {
@@ -53,12 +53,12 @@ module.exports = {
                     if (docs.length == 0) {
                         console.log(title);
 
-                        // var { message_creative_id } = await ms.broadcast.creating_broadcast_messages(
-                        //     [ms.views.dut_G_Thongbao_LopHP(title)]
-                        // )
-                        // var { broadcast_id } = await ms.broadcast.sending_broadcast_messages(
-                        //     message_creative_id
-                        // )
+                        var { message_creative_id } = await ms.broadcast.creating_broadcast_messages(
+                            [ms.views.dut_G_Thongbao_LopHP(title)]
+                        )
+                        var { broadcast_id } = await ms.broadcast.sending_broadcast_messages(
+                            message_creative_id
+                        )
 
                         database.insertMany(
                             {
