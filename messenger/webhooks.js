@@ -10,6 +10,7 @@ module.exports = function (app) {
                 var psid = sender.id;
                 if (psid && message) {
                     var text = models.message(psid, message.text)
+                    console.log(text)
                     send.message(psid, views.text(text))
                 }
                 if (postback) {
