@@ -1,4 +1,6 @@
 var models = require('./models/nlp');
+var send = require('./models/send')
+var views = require('./views')
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
@@ -6,12 +8,9 @@ module.exports = function (app) {
             body.entry.forEach(entry => {
                 var { message, sender, postback } = entry.messaging[0];
                 var psid = sender.id;
-                if (psid) {
-
-                }
-                if (message) {
-                    models.message(message.text)
-                    //     models.message(psid, message.text)
+                if (psid && message) {
+                    var text = models.message(psid, message.text)
+                    send.message(psid, views.text(text))
                 }
                 if (postback) {
                     if (postback.payload == 'GET_STARTED') {
