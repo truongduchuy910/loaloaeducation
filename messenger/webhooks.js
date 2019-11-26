@@ -50,6 +50,9 @@ module.exports = function (app) {
                 console.log('WEBHOOK_VERIFI_FAIL');
                 res.sendStatus(403);
             }
+        } else {
+            console.log('WEBHOOK_VERIFI_FAIL');
+            res.sendStatus(403);
         }
     });
 }
