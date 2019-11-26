@@ -33,7 +33,8 @@ const client = new Wit({
 // }
 module.exports = {
     message: async (text) => {
-        var entities = await client.message(text)
-        console.log(entities)
+        var { entities } = await client.message(text)
+        var { request, label } = entities
+        console.log(request, label)
     }
 }
