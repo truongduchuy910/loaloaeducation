@@ -21,7 +21,7 @@ module.exports = {
                     }
                 },
                 (err, respone, body) => {
-                    console.log('message ', psid, ': ', err, body);
+                    console.log('send psid: ', psid, 'error:  ', err, 'body: ', body);
                     res(body)
                 }
             )
