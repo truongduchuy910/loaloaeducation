@@ -8,6 +8,7 @@ module.exports = function (app) {
             body.entry.forEach(entry => {
                 var { message, sender, postback } = entry.messaging[0];
                 var psid = sender.id;
+                console.log(message, sender);
                 if (psid && message) {
                     var text = models.message(psid, message.text)
                     console.log(text)
