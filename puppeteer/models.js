@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 var database = require('./database');
 var ms = require('../messenger/models').public
+var wit = require('../wit.ai/models')
 module.exports = {
     dut: function (req, res) {
         (async () => {

@@ -1,4 +1,4 @@
-var models = require('./models/wit');
+var models = require('./models/nlp');
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
