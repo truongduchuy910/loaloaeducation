@@ -31,7 +31,7 @@ module.exports = {
                         database.insertMany(
                             {
                                 title: title,
-                                broadcast_id: "broadcast_id"
+                                broadcast_id: broadcast_id
                             }, (err, docs) => {
                             })
                     }

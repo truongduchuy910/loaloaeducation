@@ -1,6 +1,4 @@
-var models = require('./models');
-var send = require('./api/send');
-var views = require('./views')
+var models = require('./models/wit');
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
@@ -15,6 +13,7 @@ module.exports = function (app) {
                         }
                     })
                     if (message) {
+                        models.message(message.text)
                         //     models.message(psid, message.text)
                     }
                 }

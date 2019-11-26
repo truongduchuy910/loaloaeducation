@@ -17,14 +17,14 @@ module.exports = {
         attachment_id: String,
         labels: Array
     })),
-    indentity: mongoose.model('broadcast', mongoose.Schema({
+    indentity: mongoose.model('indentity', mongoose.Schema({
         time: Date,
         first_name: String,
         last_name: String,
         profile_pic: String,
         psid: String,
     })),
-    labels: mongoose.model('broadcast', mongoose.Schema({
+    labels: mongoose.model('labels', mongoose.Schema({
         time: Date,
         name: String,
         id: String,
