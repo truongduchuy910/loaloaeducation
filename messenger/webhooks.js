@@ -2,6 +2,7 @@ var models = require('./models/wit');
 module.exports = function (app) {
     app.post('/messenger/webhooks', function (req, res) {
         let body = req.body;
+        console.log(body.entry)
         if (body.object == 'page') {
             body.entry.forEach(entry => {
                 var { message, sender, postback } = entry.messaging[0];
@@ -35,6 +36,7 @@ module.exports = function (app) {
 
     })
     app.get('/messenger/webhooks', (req, res) => {
+        console.log(req.query)
         let VERIFY_TOKEN = "truongduc910"
         let mode = req.query['hub.mode'];
         let token = req.query['hub.verify_token'];
