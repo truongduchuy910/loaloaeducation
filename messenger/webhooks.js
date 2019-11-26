@@ -47,6 +47,7 @@ module.exports = function (app) {
                 res.status(200).send(challenge);
 
             } else {
+                console.log('WEBHOOK_VERIFI_FAIL');
                 res.sendStatus(403);
             }
         }
