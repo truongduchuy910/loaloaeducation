@@ -13,12 +13,12 @@ module.exports = {
 
         if (request[0].value == 'follow' && id) {
             await messenger.label.associate_label(psid, id)
-            return `Theo dõi ${label[0].value} thành công`
+            return `follow ${label[0].value} success!`
         }
         if (request[0].value == 'unfollow' && id) {
             await messenger.label.unassociate_label(psid, id)
-            return `Đã bỏ theo dõi ${label[0].value}`
+            return `unfollow ${label[0].value} success`
         }
-        return `Lỗi cú pháp!`
+        return `syntax error`
     }
 }
