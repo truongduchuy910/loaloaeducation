@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -5701,7 +5701,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Banner_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Banner.css */ "./components/Banner.css");
 /* harmony import */ var _Banner_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Banner_css__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/home/truongduchuy910/apps/quantri.yensaodatquang.vn/app/components/Banner.js";
+var _jsxFileName = "/home/truongduchuy910/apps/loaloav2.0/app/components/Banner.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -5873,7 +5873,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Nav_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Nav.css */ "./components/Nav.css");
 /* harmony import */ var _Nav_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Nav_css__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/home/truongduchuy910/apps/quantri.yensaodatquang.vn/app/components/Nav.js";
+var _jsxFileName = "/home/truongduchuy910/apps/loaloav2.0/app/components/Nav.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -6041,7 +6041,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Project_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Project.css */ "./components/Project.css");
 /* harmony import */ var _Project_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Project_css__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/home/truongduchuy910/apps/quantri.yensaodatquang.vn/app/components/Project.js";
+var _jsxFileName = "/home/truongduchuy910/apps/loaloav2.0/app/components/Project.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -6836,7 +6836,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Review_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review.css */ "./components/Review.css");
 /* harmony import */ var _Review_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Review_css__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/home/truongduchuy910/apps/quantri.yensaodatquang.vn/app/components/Review.js";
+var _jsxFileName = "/home/truongduchuy910/apps/loaloav2.0/app/components/Review.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -7153,7 +7153,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Banner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Banner */ "./components/Banner.js");
 /* harmony import */ var _components_Review__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Review */ "./components/Review.js");
 /* harmony import */ var _components_Project__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Project */ "./components/Project.js");
-var _jsxFileName = "/home/truongduchuy910/apps/quantri.yensaodatquang.vn/app/pages/index.js";
+var _jsxFileName = "/home/truongduchuy910/apps/loaloav2.0/app/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -7221,14 +7221,14 @@ function About() {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/truongduchuy910/apps/quantri.yensaodatquang.vn/app/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /home/truongduchuy910/apps/loaloav2.0/app/pages/index.js */"./pages/index.js");
 
 
 /***/ }),
